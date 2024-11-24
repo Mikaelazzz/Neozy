@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Akai",
+    "description": "Tank",
+    "imageRes": "hero1",
+    "role": "Tank"
+  },
+  {
+    "name": "Chou",
+    "description": "Fighter",
+    "imageRes": "hero1",
+    "role": "Fighter"
+  },
+  {
+    "name": "Gusion",
+    "description": "Assassin",
+    "imageRes": "hero1",
+    "role": "Assassin"
+  },
+  {
+    "name": "Cyclops",
+    "description": "Mage",
+    "imageRes": "hero1",
+    "role": "Mage"
+  },
+  {
+    "name": "Layla",
+    "description": "Marksman",
+    "imageRes": "hero1",
+    "role": "Marksman"
+  },
+  {
+    "name": "Claude",
+    "description": "Marksman",
+    "imageRes": "hero1",
+    "role": "Marksman"
+  },
+  {
+    "name": "Rafaela",
+    "description": "Support",
+    "imageRes": "hero1",
+    "role": "Support"
+  }
+]

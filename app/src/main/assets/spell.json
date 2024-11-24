@@ -1,0 +1,86 @@
+[
+  {
+    "spell": "Execute",
+    "introSpell": "Mengeliminasi HP Rendah",
+    "cdSpell": "90",
+    "imageSpell": "execute",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Retribution",
+    "introSpell": "Khusus Jungler",
+    "cdSpell": "35",
+    "imageSpell": "retri",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Inspire",
+    "introSpell": "Memperkuat Basic Attack",
+    "cdSpell": "75",
+    "imageSpell": "inspire",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Sprint",
+    "introSpell": "Meningkatkan Movement Speed",
+    "cdSpell": "100",
+    "imageSpell": "sprint",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Revitalize",
+    "introSpell": "Pemulihan Area",
+    "cdSpell": "75",
+    "imageSpell": "revitalize",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Aegis",
+    "introSpell": "Melindungi Hero Empuk",
+    "cdSpell": "75",
+    "imageSpell": "aegis",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Petrify",
+    "introSpell": "Crowd Control Area",
+    "cdSpell": "75",
+    "imageSpell": "petrify",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Purify",
+    "introSpell": "Menghapus Debuff",
+    "cdSpell": "90",
+    "imageSpell": "purify",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Flameshot",
+    "introSpell": "Menyerang & Bertahan",
+    "cdSpell": "50",
+    "imageSpell": "flameshot",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Flicker",
+    "introSpell": "Mobilitas",
+    "cdSpell": "120",
+    "imageSpell": "flicker",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Arrival",
+    "introSpell": "Bantuan dari Jarak Jauh",
+    "cdSpell": "75",
+    "imageSpell": "arrival",
+    "deskripsiSpell": "Tank"
+  },
+  {
+    "spell": "Vengeance",
+    "introSpell": "Memantulkan Damage",
+    "cdSpell": "75",
+    "imageSpell": "vengeance",
+    "deskripsiSpell": "Tank"
+  }
+]

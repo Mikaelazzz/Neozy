@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Neozz</string>
+    <string name="navigation_drawer_open">Open Drawer</string>
+    <string name="navigation_drawer_close">Close Drawer</string>
+    <string name="win">Digunakan untuk menghitung total jumlah pertandingan yang harus diambil untuk mencapai target tingkat kemenangan yang diinginkan.</string>
+    <string name="lose">Digunakan untuk menghitung total jumlah pertandingan yang harus diambil untuk mencapai target kekalahan yang diinginkan.</string>
+    <string name="mgcw">Digunakan untuk mengetahui total maksimal diamond yang dibutuhkan untuk mendapatkan skin Legends.</string>
+    <string name="result_format">Dengan %1$d bintang, Anda membutuhkan %2$d Diamond.\nUntuk mencapai maksimal, Anda masih memerlukan %3$d bintang (%4$d Diamond).</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

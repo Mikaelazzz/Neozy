@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Beranda"/>
+    <item
+        android:title="Heroes">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/hero"
+                    android:icon="@drawable/crown"
+                    android:title="Hero"/>
+                <item
+                    android:id="@+id/emblem"
+                    android:icon="@drawable/emb"
+                    android:title="Emblem"/>
+                <item
+                    android:id="@+id/spell"
+                    android:icon="@drawable/spl"
+                    android:title="Spell"/>
+                <item
+                    android:id="@+id/item_hero"
+                    android:icon="@drawable/itm"
+                    android:title="Item"/>
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:title="Kalkulator">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/winstreak"
+                    android:icon="@drawable/cal"
+                    android:title="Win Rate"/>
+                <item
+                    android:id="@+id/lose_streak"
+                    android:icon="@drawable/cal"
+                    android:title="Target Match"/>
+                <item
+                    android:id="@+id/mgcwheel"
+                    android:icon="@drawable/cal"
+                    android:title="Magic Wheel"/>
+                <item
+                    android:id="@+id/zodiac"
+                    android:icon="@drawable/cal"
+                    android:title="Zodiac"/>
+                <item
+                    android:id="@+id/allmatch"
+                    android:icon="@drawable/cal"
+                    android:title="Total Match"/>
+            </group>
+        </menu>
+    </item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/aboutus"
+            android:icon="@drawable/abt"
+            android:title="About Us"/>
+    </group>
+</menu>
