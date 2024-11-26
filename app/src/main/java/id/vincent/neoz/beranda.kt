@@ -22,14 +22,6 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
         @SerializedName("role") val role: String
     )
 
-    data class Spell(
-        @SerializedName("spell") val nSpell: String,
-        @SerializedName("introSpell") val iSpell: String,
-        @SerializedName("cdSpell") val cSpell: String,
-        @SerializedName("imageSpell") val imgSpell: String,
-        @SerializedName("deskripsiSpell") val descSpell: String
-    )
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
