@@ -27,7 +27,7 @@ class bspell : Fragment() {
     }
 
     private fun setupRecyclerView(view: View) {
-        val recyclerView: RecyclerView = view.findViewById(R.id.list_hero)
+        val recyclerView: RecyclerView = view.findViewById(R.id.list_spell)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val adapter = SpellAdapter(emptyList()) // Adapter kosong saat pertama kali
