@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/div2"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:maxHeight="350dp"
+    android:minHeight="100dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="15dp"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back_card"
+        android:paddingLeft="2.9dp"
+        android:paddingRight="2.9dp"
+        android:paddingBottom="3.2dp"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card"
+            android:layout_marginTop="98dp"
+            android:layout_centerHorizontal="true">
+        </ImageView>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:layout_centerHorizontal="true"
+            >
+
+            <ImageView
+                android:id="@+id/imagesItem"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/retri"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                />
+            <ImageView
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/border"
+                android:layout_marginTop="5.9dp"
+                android:layout_marginLeft="11dp"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/titleItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nama spell"
+            android:fontFamily="@font/poppinsbold"
+            android:textColor="@color/font"
+            android:textSize="24sp"
+            android:layout_marginTop="140dp"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/subtitleItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Intro spell"
+            android:fontFamily="@font/poppinssemibold"
+            android:textColor="@color/font"
+            android:textSize="14sp"
+            android:layout_marginTop="175dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atribut Item"
+            android:fontFamily="@font/poppinssemibold"
+            android:textColor="@color/font"
+            android:textSize="14sp"
+            android:layout_marginTop="205dp"
+            android:layout_centerHorizontal="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            >
+            <LinearLayout
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                >
+                <TextView
+                    android:id="@+id/item1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atribut Item1"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textColor="@color/font"
+                    android:textSize="14sp"
+                    android:layout_marginTop="195dp"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/item2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atribut Item2"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textColor="@color/font"
+                    android:textSize="14sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/item3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atribut Item3"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textColor="@color/font"
+                    android:textSize="14sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                >
+                <TextView
+                    android:id="@+id/item4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atribut Item1"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textColor="@color/font"
+                    android:textSize="14sp"
+                    android:layout_marginTop="195dp"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/item5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atribut Item2"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textColor="@color/font"
+                    android:textSize="14sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/item6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atribut Item3"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textColor="@color/font"
+                    android:textSize="14sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"/>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/descItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adding an index usually speeds up your select queries but will slow down other queries like insert or update. You should be careful when adding indices to ensure that this additional cost is worth the gain. There are 2 ways to define an index in an Entity ."
+            android:fontFamily="@font/poppinssemibold"
+            android:textColor="@color/font"
+            android:textSize="13sp"
+            android:layout_marginTop="346dp"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
