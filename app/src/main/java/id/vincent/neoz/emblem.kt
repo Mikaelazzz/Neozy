@@ -1,59 +1,82 @@
 package id.vincent.neoz
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.annotations.SerializedName
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [emblem.newInstance] factory method to
- * create an instance of this fragment.
- */
 class emblem : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val emblemViewModel: EmblemViewModel by lazy {
+        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[EmblemViewModel::class.java]
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    data class Emblem(
+        @SerializedName ("titleE")val titleE: String,
+        @SerializedName ("imageE")val imageE: String
+    )
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.emblem, container, false)
+        setupRecyclerView(view)
+
+        emblemViewModel.emblemlist.observe(viewLifecycleOwner) { emblems: List<Emblem> ->
+            (view.findViewById<RecyclerView>(R.id.list_emblem).adapter as EmblemAdapter).updateData(emblems)
+        }
+
+        return view
+    }
+
+    private fun setupRecyclerView(view: View) {
+        val recyclerView: RecyclerView = view.findViewById(R.id.list_emblem)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        val adapter = EmblemAdapter(emptyList()) // Empty adapter at first
+        recyclerView.adapter = adapter
+
+        // Observe data from ViewModel
+        emblemViewModel.emblemlist.observe(viewLifecycleOwner) { emblems: List<Emblem> ->
+            adapter.updateData(emblems)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.emblem, container, false)
-    }
+    class EmblemAdapter(private var emblems: List<Emblem>) :
+        RecyclerView.Adapter<EmblemAdapter.EmblemViewHolder>() {
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment emblem.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            emblem().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        class EmblemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val name: TextView = itemView.findViewById(R.id.titleEmblem)
+            val image: ImageView = itemView.findViewById(R.id.imageEmblem)
+            // Remove role TextView since it won't be displayed
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmblemViewHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.list_emblem, parent, false)
+            return EmblemViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: EmblemViewHolder, position: Int) {
+            val emblem = emblems[position]
+            holder.name.text = emblem.titleE // Only display titleE
+            holder.image.setImageResource(
+                holder.itemView.context.resources.getIdentifier(emblem.imageE, "drawable", holder.itemView.context.packageName)
+            )
+        }
+
+        override fun getItemCount(): Int = emblems.size
+
+        fun updateData(newEmblems: List<Emblem>) {
+            emblems = newEmblems
+            notifyDataSetChanged()
+        }
     }
 }
