@@ -51,6 +51,7 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
         toggle.syncState()
 
         navigationView.setNavigationItemSelectedListener(this)
+        replaceFragment(patch())
 
     }
 
@@ -66,6 +67,7 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
         when (item.itemId) {
             R.id.home -> {
                 titletool.text = "Home"
+                replaceFragment(patch())
             }
             R.id.hero -> {
                 titletool.text = "Hero"
@@ -73,7 +75,7 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
             }
             R.id.emblem -> {
                 titletool.text = "Emblem"
-                // TODO: Add code to display heroes list
+                replaceFragment(emblem())
             }
             R.id.spell -> {
                 titletool.text = "Spell"
@@ -81,7 +83,7 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
             }
             R.id.item_hero -> {
                 titletool.text = "Item Hero"
-                // TODO: Add code to display heroes list
+                replaceFragment(itemhero())
             }
             R.id.winstreak -> {
                 titletool.text = "Win Rate"
