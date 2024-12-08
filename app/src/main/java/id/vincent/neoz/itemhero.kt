@@ -52,7 +52,6 @@ class itemhero : Fragment() {
     private fun setupRecyclerView(view: View) {
         val recyclerView: RecyclerView = view.findViewById(R.id.list_item)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         val adapter = ItemAdapter(emptyList()) // Set empty list as initial data
         recyclerView.adapter = adapter
     }
@@ -65,6 +64,12 @@ class itemhero : Fragment() {
         class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val name: TextView = itemView.findViewById(R.id.titleItem)
             val intro: TextView = itemView.findViewById(R.id.subtitleItem)
+            val i1 : TextView = itemView.findViewById(R.id.item1)
+            val i2 : TextView = itemView.findViewById(R.id.item2)
+            val i3 : TextView = itemView.findViewById(R.id.item3)
+            val i4 : TextView = itemView.findViewById(R.id.item4)
+            val i5 : TextView = itemView.findViewById(R.id.item5)
+            val i6 : TextView = itemView.findViewById(R.id.item6)
             val image: ImageView = itemView.findViewById(R.id.imagesItem)
         }
 
@@ -78,6 +83,12 @@ class itemhero : Fragment() {
             val item = items[position]
             holder.name.text = item.namaItem
             holder.intro.text = item.introItem
+            holder.i1.text = item.item1
+            holder.i2.text = item.item2
+            holder.i3.text = item.item3
+            holder.i4.text = item.item4
+            holder.i5.text = item.item5
+            holder.i6.text = item.item6
 
             // Menampilkan gambar berdasarkan nama yang ada di imageItem
             val imageResId = holder.itemView.context.resources.getIdentifier(
