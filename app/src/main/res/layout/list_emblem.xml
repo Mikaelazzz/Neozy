@@ -12,7 +12,6 @@
     >
 
     <RelativeLayout
-        android:id="@+id/div1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
@@ -22,18 +21,19 @@
         android:paddingTop="2.8dp"
         android:paddingBottom="3.2dp"
         android:paddingRight="3.2dp"
+        android:paddingLeft="3.2dp"
         >
 
         <ImageView
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/card_heroes"
+            android:background="@drawable/back_card_emblem"
             android:layout_alignParentRight="true">
         </ImageView>
 
 
         <ImageView
-            android:id="@+id/images"
+            android:id="@+id/imageEmblem"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:src="@drawable/retri"
@@ -47,28 +47,30 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="29dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_centerVertical="true">
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/titleEmblem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/font"
                 android:text="halo"
-                android:textSize="24sp"
-                android:layout_marginLeft="85dp"/>
+                android:textSize="32sp"
+                android:layout_marginLeft="85dp"
+                />
 
-            <TextView
-                android:id="@+id/desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16sp"
-                android:fontFamily="@font/poppinssemibold"
-                android:textColor="@color/font"
-                android:text="halo"
-                android:textSize="20sp"
-                android:layout_marginLeft="85dp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/desc"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16sp"-->
+<!--                android:fontFamily="@font/poppinssemibold"-->
+<!--                android:textColor="@color/font"-->
+<!--                android:text="halo"-->
+<!--                android:textSize="20sp"-->
+<!--                android:layout_marginLeft="85dp"/>-->
         </LinearLayout>
     </RelativeLayout>
 
