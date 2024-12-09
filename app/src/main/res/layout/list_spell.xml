@@ -15,9 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/back_card"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:paddingBottom="3.9dp"
+        android:paddingLeft="2.9dp"
+        android:paddingRight="2.9dp"
+        android:paddingBottom="3.2dp"
         >
 
         <ImageView
