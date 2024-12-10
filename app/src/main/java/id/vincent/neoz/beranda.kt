@@ -51,6 +51,8 @@ class NetworkChangeReceiver(private val onNetworkChange: (Boolean) -> Unit) : Br
 
 
 class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private var isNetworkConnected = true // Untuk menyimpan status koneksi terakhir
+    private var lastFragment: Fragment? = null // Menyimpan fragment terakhir
 
     private lateinit var networkChangeReceiver: NetworkChangeReceiver
     private var isWaitingForUserAction = false // Flag to control if user needs to press the button
@@ -63,19 +65,23 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
         @SerializedName("role") val role: String
     )
 
-    private var currentFragment: Fragment? = null // Variabel untuk menyimpan fragment saat ini
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_beranda)
+        setContentView(R.layout.activity_beranda) // Tampilkan layout normal saat pertama kali
+
 
         if (savedInstanceState != null) {
-            currentFragment = supportFragmentManager.getFragment(savedInstanceState, "currentFragment")
+            lastFragment = supportFragmentManager.getFragment(savedInstanceState, "lastFragment")
         }
 
+        showDefaultFragment()  // Tampilkan fragment default saat aplikasi dimulai
+
         setupNetworkReceiver()
-        checkInternetAndSetup()
+
+
 
         // Setup Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -103,33 +109,75 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        currentFragment?.let {
-            supportFragmentManager.putFragment(outState, "currentFragment", it)
+        lastFragment?.let {
+            supportFragmentManager.putFragment(outState, "lastFragment", it)
+        }
+    }
+
+
+    private fun showDefaultFragment() {
+        if (lastFragment == null) {
+            replaceFragment(patch()) // Tampilkan fragment default
+        } else {
+            replaceFragment(lastFragment!!)
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun setupNetworkReceiver() {
-        try {
-            networkChangeReceiver = NetworkChangeReceiver { isConnected ->
-                if (isConnected) {
-                    if (isWaitingForUserAction) {
-                        showNoInternetLayout()
-                    } else {
-                        isWaitingForUserAction = true
-                        Toast.makeText(this, "Koneksi internet kembali!", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
+        networkChangeReceiver = NetworkChangeReceiver { isConnected ->
+            if (isConnected) {
+                if (!isNetworkConnected) { // Jika sebelumnya terputus
+                    isNetworkConnected = true
+                    // Menunggu konfirmasi dari pengguna melalui tombol signal
+                    showProgressAndWaitForUserConfirmation()
+                }
+            } else {
+                if (isNetworkConnected) { // Jika sebelumnya terhubung
+                    isNetworkConnected = false
+                    showNoInternetLayout() // Tampilkan halaman internet.xml
+                }
+            }
+        }
+
+        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkChangeReceiver, filter)
+    }
+
+    // Fungsi untuk menampilkan progress bar dan menunggu konfirmasi pengguna
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun showProgressAndWaitForUserConfirmation() {
+        val progressBar: ProgressBar = findViewById(R.id.progress_bar)
+        val buttonSignal: Button = findViewById(R.id.button_signal)
+
+        // Menampilkan ProgressBar dan menonaktifkan tombol
+        progressBar.visibility = View.VISIBLE
+        buttonSignal.isEnabled = false
+
+        // Menunggu 2 detik sebelum memeriksa koneksi
+        Handler(Looper.getMainLooper()).postDelayed({
+            // Pengecekan koneksi
+            if (NetworkUtil.isConnected(this)) {
+                // Koneksi ada, lanjutkan dengan mengganti fragment
+                progressBar.visibility = View.GONE
+                buttonSignal.isEnabled = true
+                buttonSignal.setOnClickListener {
+                    // Tombol signal diklik, lanjutkan ke lastFragment
+                    replaceFragment(lastFragment ?: patch())
+                }
+            } else {
+                // Tidak ada koneksi, tampilkan layout internet.xml
+                showNoInternetLayout()
+                progressBar.visibility = View.GONE
+                buttonSignal.isEnabled = true
+                buttonSignal.setOnClickListener {
+                    // Jika tombol diklik dan tidak ada koneksi, tetap di halaman internet.xml
                     showNoInternetLayout()
                 }
             }
-
-            val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
-            registerReceiver(networkChangeReceiver, filter)
-        } catch (e: Exception) {
-            e.printStackTrace() // Handle exceptions
-        }
+        }, 2000) // 2 detik delay
     }
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun checkInternetAndSetup() {
@@ -143,58 +191,40 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun setupMainLayout() {
-        if (isNetworkConnected()) {
-            // Jika koneksi internet kembali, tampilkan fragment terakhir yang disimpan
-            if (currentFragment != null) {
-                replaceFragment(currentFragment!!)
-            } else {
-                // Jika tidak ada fragment yang tersimpan, tampilkan fragment default (misalnya, patch())
-                replaceFragment(patch())
-            }
-        } else {
-            showNoInternetLayout()
-        }
+        lastFragment?.let { replaceFragment(it) } // Kembalikan fragment terakhir
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+
     private fun showNoInternetLayout() {
-        // Avoid switching layout too often
-        setContentView(R.layout.internet)
-
-        val retryButton: Button = findViewById(R.id.button_signal)
-        val progressBar: ProgressBar = findViewById(R.id.progress_bar)
-
-        retryButton.setOnClickListener {
-            progressBar.visibility = View.VISIBLE
-            retryButton.isEnabled = false
-
-            // Retry network check with delay
-            Handler(Looper.getMainLooper()).postDelayed({
-                if (NetworkUtil.isConnected(this)) {
-                    setupMainLayout() // Reload main layout
-                    isWaitingForUserAction = false
-                } else {
-                    Toast.makeText(this, "Tidak ada koneksi internet!", Toast.LENGTH_SHORT).show()
-                    progressBar.visibility = View.GONE
-                    retryButton.isEnabled = true
-                }
-            }, 2500) // Delay for checking again
-        }
+        replaceFragment(NoInternetFragment()) // Tampilkan fragment untuk halaman internet
     }
 
-    private fun isNetworkConnected(): Boolean {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = connectivityManager.activeNetworkInfo
-        return activeNetwork?.isConnected == true
-    }
+
 
 
     private fun replaceFragment(fragment: Fragment) {
-        currentFragment = fragment
+        if (fragment !is NoInternetFragment) {
+            lastFragment = fragment // Simpan fragment terakhir sebelum mengganti
+        }
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(null)
             .commit()
     }
+
+    fun onInternetRestored() {
+        isWaitingForUserAction = false
+        if (lastFragment != null) {
+            replaceFragment(lastFragment!!)
+        } else {
+            replaceFragment(patch()) // Fragment default jika tidak ada lastFragment
+        }
+        Toast.makeText(this, "Koneksi internet stabil!", Toast.LENGTH_SHORT).show()
+    }
+
+
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val titletool : TextView = findViewById(R.id.toolbartitle)
