@@ -224,9 +224,29 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun handleInternetRestoration() {
+        // Jika koneksi pulih, kembali ke fragment terakhir yang dikunjungi
+        if (lastFragment != null) {
+            replaceFragment(lastFragment!!)
+        } else {
+            // Jika tidak ada lastFragment, tampilkan fragment default
+            replaceFragment(patch()) // Atau fragment default lainnya
+        }
+        Toast.makeText(this, "Koneksi internet stabil!", Toast.LENGTH_SHORT).show()
+    }
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        // Periksa koneksi internet
+        if (!NetworkUtil.isConnected(this)) {
+            Toast.makeText(this, "Periksa koneksi internet anda", Toast.LENGTH_SHORT).show()
+            setupNetworkReceiver()
+            return false
+        }
+
         val titletool : TextView = findViewById(R.id.toolbartitle)
         when (item.itemId) {
             R.id.home -> {

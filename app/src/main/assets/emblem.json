@@ -1,30 +1,30 @@
 [
   {
     "titleE": "Common",
-    "imageE": "hero1"
+    "imageE": "common"
   },
   {
     "titleE": "Tank",
-    "imageE": "hero1"
+    "imageE": "tank"
   },
   {
     "titleE": "Assassin",
-    "imageE": "hero1"
+    "imageE": "assasin"
   },
   {
     "titleE": "Mage",
-    "imageE": "hero1"
+    "imageE": "mage"
   },
   {
     "titleE": "Fighter",
-    "imageE": "hero1"
+    "imageE": "fighter"
   },
   {
     "titleE": "Support",
-    "imageE": "hero1"
+    "imageE": "support"
   },
   {
     "titleE": "Marksman",
-    "imageE": "hero1"
+    "imageE": "marksman"
   }
 ]
