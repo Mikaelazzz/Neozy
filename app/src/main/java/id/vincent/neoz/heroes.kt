@@ -20,6 +20,7 @@ import id.vincent.neoz.beranda.Hero
 
 class heroes : Fragment() {
 
+
     private val heroViewModel: HeroViewModel by lazy {
         ViewModelProvider(requireActivity())[HeroViewModel::class.java]
     }
@@ -94,9 +95,9 @@ class heroes : Fragment() {
     class PaginatedHeroAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         companion object {
             private const val PAGE_SIZE = 10
-            private const val ANIMATION_DURATION = 300L
+            private const val ANIMATION_DURATION = 100L
             private const val LOAD_DELAY = 300L // Delay antar item
-            private const val AUTO_LOAD_DELAY = 1500L // Delay sebelum memuat item selanjutnya
+            private const val AUTO_LOAD_DELAY = 2000L // Delay sebelum memuat item selanjutnya
         }
 
         private var originalHeroes: List<Hero> = listOf()
