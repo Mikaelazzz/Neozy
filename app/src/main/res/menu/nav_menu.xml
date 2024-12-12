@@ -29,6 +29,22 @@
     </item>
 
     <item
+        android:title="Mode">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/game"
+                    android:icon="@drawable/crown"
+                    android:title="Cek Nick Game"/>
+                <item
+                    android:id="@+id/filter"
+                    android:icon="@drawable/emb"
+                    android:title="Filter Draft"/>
+            </group>
+        </menu>
+    </item>
+
+    <item
         android:title="Kalkulator">
         <menu>
             <group>
