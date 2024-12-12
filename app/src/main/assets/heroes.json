@@ -3,703 +3,1405 @@
     "name": "Miya",
     "description": "Marksman",
     "imageRes": "hero1",
-    "role": "Marksman"
-  },
-  {
-    "name": "Balmond",
-    "description": "Assasin",
-    "imageRes": "hero2",
-    "role": "Assasin"
-  },
-  {
-    "name": "Saber",
-    "description": "Assasin",
-    "imageRes": "hero3",
-    "role": "Assasin"
-  },
-  {
-    "name": "Alice",
-    "description": "Fighter",
-    "imageRes": "hero4",
-    "role": "Fighter"
-  },
-  {
-    "name": "Nana",
-    "description": "Mage",
-    "imageRes": "hero5",
-    "role": "Mage"
-  },
-  {
-    "name": "Tigreal",
-    "description": "Tank",
-    "imageRes": "hero6",
-    "role": "Tank"
-  },
-  {
-    "name": "Alucard",
-    "description": "Assasin",
-    "imageRes": "hero7",
-    "role": "Assasin"
-  },
-  {
-    "name": "Karina",
-    "description": "Assasin",
-    "imageRes": "hero8",
-    "role": "Assasin"
-  },
-  {
-    "name": "Akai",
-    "description": "Tank",
-    "imageRes": "hero9",
-    "role": "Tank"
-  },
-  {
-    "name": "Franco",
-    "description": "Tank",
-    "imageRes": "hero10",
-    "role": "Tank"
-  },
-  {
-    "name": "Bane",
-    "description": "Assasin",
-    "imageRes": "hero11",
-    "role": "Assasin"
-  },
-  {
-    "name": "Bruno",
-    "description": "Marksman",
-    "imageRes": "hero12",
-    "role": "Marksman"
-  },
-  {
-    "name": "Clint",
-    "description": "Marksman",
-    "imageRes": "hero13",
-    "role": "Marksman"
-  },
-  {
-    "name": "Rafaela",
-    "description": "Tank",
-    "imageRes": "hero14",
-    "role": "Tank"
-  },
-  {
-    "name": "Eudora",
-    "description": "Mage",
-    "imageRes": "hero15",
-    "role": "Mage"
-  },
-  {
-    "name": "Zilong",
-    "description": "Fighter",
-    "imageRes": "hero16",
-    "role": "Fighter"
-  },
-  {
-    "name": "Fanny",
-    "description": "Assasin",
-    "imageRes": "hero17",
-    "role": "Assasin"
-  },
-  {
-    "name": "Layla",
-    "description": "Marksman",
-    "imageRes": "hero18",
-    "role": "Marksman"
-  },
-  {
-    "name": "Minotaur",
-    "description": "Tank",
-    "imageRes": "hero19",
-    "role": "Tank"
-  },
-  {
-    "name": "Lolita",
-    "description": "Tank",
-    "imageRes": "hero20",
-    "role": "Tank"
-  },
-  {
-    "name": "Hayabusa",
-    "description": "Assasin",
-    "imageRes": "hero21",
-    "role": "Assasin"
-  },
-  {
-    "name": "Gord",
-    "description": "Mage",
-    "imageRes": "hero22",
-    "role": "Mage"
-  },
-  {
-    "name": "Natalia",
-    "description": "Tank",
-    "imageRes": "hero23",
-    "role": "Tank"
-  },
-  {
-    "name": "Chou",
-    "description": "Fighter",
-    "imageRes": "hero24",
-    "role": "Fighter"
-  },
-  {
-    "name": "Sun",
-    "description": "Fighter",
-    "imageRes": "hero25",
-    "role": "Fighter"
-  },
-  {
-    "name": "Alpha",
-    "description": "Assasin",
-    "imageRes": "hero26",
-    "role": "Assasin"
-  },
-  {
-    "name": "Ruby",
-    "description": "Fighter",
-    "imageRes": "hero27",
-    "role": "Fighter"
-  },
-  {
-    "name": "Yi Sun-shin",
-    "description": "Assasin",
-    "imageRes": "hero28",
-    "role": "Assasin"
-  },
-  {
-    "name": "Moskov",
-    "description": "Marksman",
-    "imageRes": "hero29",
-    "role": "Marksman"
-  },
-  {
-    "name": "Johnson",
-    "description": "Tank",
-    "imageRes": "hero30",
-    "role": "Tank"
-  },
-  {
-    "name": "Cyclop",
-    "description": "Mage",
-    "imageRes": "hero31",
-    "role": "Mage"
-  },
-  {
-    "name": "Estes",
-    "description": "Tank",
-    "imageRes": "hero32",
-    "role": "Tank"
-  },
-  {
-    "name": "Hilda",
-    "description": "Tank",
-    "imageRes": "hero33",
-    "role": "Tank"
-  },
-  {
-    "name": "Aurora",
-    "description": "Mage",
-    "imageRes": "hero34",
-    "role": "Mage"
-  },
-  {
-    "name": "Lapu-lapu",
-    "description": "Fighter",
-    "imageRes": "hero35",
-    "role": "Fighter"
-  },
-  {
-    "name": "Vexana",
-    "description": "Mage",
-    "imageRes": "hero36",
-    "role": "Mage"
-  },
-  {
-    "name": "Roger",
-    "description": "Assasin",
-    "imageRes": "hero37",
-    "role": "Assasin"
-  },
-  {
-    "name": "Karrie",
-    "description": "Marksman",
-    "imageRes": "hero38",
-    "role": "Marksman"
-  },
-  {
-    "name": "Gatotkaca",
-    "description": "Tank",
-    "imageRes": "hero39",
-    "role": "Tank"
-  },
-  {
-    "name": "Harley",
-    "description": "Assasin",
-    "imageRes": "hero40",
-    "role": "Assasin"
-  },
-  {
-    "name": "Irithel",
-    "description": "Marksman",
-    "imageRes": "hero41",
-    "role": "Marksman"
-  },
-  {
-    "name": "Grock",
-    "description": "Tank",
-    "imageRes": "hero42",
-    "role": "Tank"
-  },
-  {
-    "name": "Argus",
-    "description": "Fighter",
-    "imageRes": "hero43",
-    "role": "Fighter"
-  },
-  {
-    "name": "Odette",
-    "description": "Mage",
-    "imageRes": "hero44",
-    "role": "Mage"
-  },
-  {
-    "name": "Lancelot",
-    "description": "Assasin",
-    "imageRes": "hero45",
-    "role": "Assasin"
-  },
-  {
-    "name": "Diggie",
-    "description": "Tank",
-    "imageRes": "hero46",
-    "role": "Tank"
-  },
-  {
-    "name": "Hylos",
-    "description": "Tank",
-    "imageRes": "hero47",
-    "role": "Tank"
-  },
-  {
-    "name": "Zhask",
-    "description": "Mage",
-    "imageRes": "hero48",
-    "role": "Mage"
-  },
-  {
-    "name": "Helcurt",
-    "description": "Assasin",
-    "imageRes": "hero49",
-    "role": "Assasin"
-  },
-  {
-    "name": "Pharsa",
-    "description": "Mage",
-    "imageRes": "hero50",
-    "role": "Mage"
-  },
-  {
-    "name": "Lesley",
-    "description": "Marksman",
-    "imageRes": "hero51",
-    "role": "Marksman"
-  },
-  {
-    "name": "Jawhead",
-    "description": "Fighter",
-    "imageRes": "hero52",
-    "role": "Fighter"
-  },
-  {
-    "name": "Angela",
-    "description": "Tank",
-    "imageRes": "hero53",
-    "role": "Tank"
-  },
-  {
-    "name": "Gusion",
-    "description": "Assasin",
-    "imageRes": "hero54",
-    "role": "Assasin"
-  },
-  {
-    "name": "Valir",
-    "description": "Mage",
-    "imageRes": "hero55",
-    "role": "Mage"
-  },
-  {
-    "name": "Martis",
-    "description": "Assasin",
-    "imageRes": "hero56",
-    "role": "Assasin"
-  },
-  {
-    "name": "Uranus",
-    "description": "Fighter",
-    "imageRes": "hero57",
-    "role": "Fighter"
-  },
-  {
-    "name": "Hanabi",
-    "description": "Marksman",
-    "imageRes": "hero58",
-    "role": "Marksman"
-  },
-  {
-    "name": "Chang'e",
-    "description": "Mage",
-    "imageRes": "hero59",
-    "role": "Mage"
-  },
-  {
-    "name": "Kaja",
-    "description": "Tank",
-    "imageRes": "hero60",
-    "role": "Tank"
-  },
-  {
-    "name": "Selena",
-    "description": "Tank",
-    "imageRes": "hero61",
-    "role": "Tank"
-  },
-  {
-    "name": "Aldous",
-    "description": "Fighter",
-    "imageRes": "hero62",
-    "role": "Fighter"
-  },
-  {
-    "name": "Claude",
-    "description": "Marksman",
-    "imageRes": "hero63",
-    "role": "Marksman"
-  },
-  {
-    "name": "Vale",
-    "description": "Mage",
-    "imageRes": "hero64",
-    "role": "Mage"
-  },
-  {
-    "name": "Leomord",
-    "description": "Assasin",
-    "imageRes": "hero65",
-    "role": "Assasin"
-  },
-  {
-    "name": "Lunox",
-    "description": "Mage",
-    "imageRes": "hero66",
-    "role": "Mage"
-  },
-  {
-    "name": "Hanzo",
-    "description": "Assasin",
-    "imageRes": "hero67",
-    "role": "Assasin"
-  },
-  {
-    "name": "Belerick",
-    "description": "Tank",
-    "imageRes": "hero68",
-    "role": "Tank"
-  },
-  {
-    "name": "Kimmy",
-    "description": "Marksman",
-    "imageRes": "hero69",
-    "role": "Marksman"
-  },
-  {
-    "name": "Thamuz",
-    "description": "Fighter",
-    "imageRes": "hero70",
-    "role": "Fighter"
-  },
-  {
-    "name": "Harith",
-    "description": "Mage",
-    "imageRes": "hero71",
-    "role": "Mage"
-  },
-  {
-    "name": "Minshitar",
-    "description": "Fighter",
-    "imageRes": "hero72",
-    "role": "Fighter"
-  },
-  {
-    "name": "Kadita",
-    "description": "Mage",
-    "imageRes": "hero73",
-    "role": "Mage"
-  },
-  {
-    "name": "Faramis",
-    "description": "Mage",
-    "imageRes": "hero74",
-    "role": "Mage"
-  },
-  {
-    "name": "Badang",
-    "description": "Fighter",
-    "imageRes": "hero75",
-    "role": "Fighter"
-  },
-  {
-    "name": "Kufra",
-    "description": "Tank",
-    "imageRes": "hero76",
-    "role": "Tank"
-  },
-  {
-    "name": "Granger",
-    "description": "Assasin",
-    "imageRes": "hero77",
-    "role": "Assasin"
-  },
-  {
-    "name": "Guinevere",
-    "description": "Fighter",
-    "imageRes": "hero78",
-    "role": "Fighter"
-  },
-  {
-    "name": "Esmeralda",
-    "description": "Fighter",
-    "imageRes": "hero79",
-    "role": "Fighter"
-  },
-  {
-    "name": "Terizla",
-    "description": "Fighter",
-    "imageRes": "hero80",
-    "role": "Fighter"
-  },
+    "role": "Marksman",
+    "bp" : "32000",
+    "dm" : "599",
+    "tiket" : "399",
+    "rolee" : "gold",
+    "type" : "Chase",
+    "story" : "Latar belakang"
+  },
+    {
+      "name": "Balmond",
+      "description": "Assasin",
+      "imageRes": "hero2",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Saber",
+      "description": "Assasin",
+      "imageRes": "hero3",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Alice",
+      "description": "Fighter",
+      "imageRes": "hero4",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Nana",
+      "description": "Mage",
+      "imageRes": "hero5",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Tigreal",
+      "description": "Tank",
+      "imageRes": "hero6",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Alucard",
+      "description": "Assasin",
+      "imageRes": "hero7",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Karina",
+      "description": "Assasin",
+      "imageRes": "hero8",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Akai",
+      "description": "Tank",
+      "imageRes": "hero9",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Franco",
+      "description": "Tank",
+      "imageRes": "hero10",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Bane",
+      "description": "Assasin",
+      "imageRes": "hero11",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Bruno",
+      "description": "Marksman",
+      "imageRes": "hero12",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Clint",
+      "description": "Marksman",
+      "imageRes": "hero13",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Rafaela",
+      "description": "Tank",
+      "imageRes": "hero14",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Eudora",
+      "description": "Mage",
+      "imageRes": "hero15",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Zilong",
+      "description": "Fighter",
+      "imageRes": "hero16",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Fanny",
+      "description": "Assasin",
+      "imageRes": "hero17",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Layla",
+      "description": "Marksman",
+      "imageRes": "hero18",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Minotaur",
+      "description": "Tank",
+      "imageRes": "hero19",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Lolita",
+      "description": "Tank",
+      "imageRes": "hero20",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Hayabusa",
+      "description": "Assasin",
+      "imageRes": "hero21",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Gord",
+      "description": "Mage",
+      "imageRes": "hero22",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Natalia",
+      "description": "Tank",
+      "imageRes": "hero23",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Chou",
+      "description": "Fighter",
+      "imageRes": "hero24",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Sun",
+      "description": "Fighter",
+      "imageRes": "hero25",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Alpha",
+      "description": "Assasin",
+      "imageRes": "hero26",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Ruby",
+      "description": "Fighter",
+      "imageRes": "hero27",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Yi Sun-shin",
+      "description": "Assasin",
+      "imageRes": "hero28",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Moskov",
+      "description": "Marksman",
+      "imageRes": "hero29",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Johnson",
+      "description": "Tank",
+      "imageRes": "hero30",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Cyclop",
+      "description": "Mage",
+      "imageRes": "hero31",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Estes",
+      "description": "Tank",
+      "imageRes": "hero32",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Hilda",
+      "description": "Tank",
+      "imageRes": "hero33",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Aurora",
+      "description": "Mage",
+      "imageRes": "hero34",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Lapu-lapu",
+      "description": "Fighter",
+      "imageRes": "hero35",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Vexana",
+      "description": "Mage",
+      "imageRes": "hero36",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Roger",
+      "description": "Assasin",
+      "imageRes": "hero37",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Karrie",
+      "description": "Marksman",
+      "imageRes": "hero38",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Gatotkaca",
+      "description": "Tank",
+      "imageRes": "hero39",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Harley",
+      "description": "Assasin",
+      "imageRes": "hero40",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Irithel",
+      "description": "Marksman",
+      "imageRes": "hero41",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Grock",
+      "description": "Tank",
+      "imageRes": "hero42",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Argus",
+      "description": "Fighter",
+      "imageRes": "hero43",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Odette",
+      "description": "Mage",
+      "imageRes": "hero44",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Lancelot",
+      "description": "Assasin",
+      "imageRes": "hero45",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Diggie",
+      "description": "Tank",
+      "imageRes": "hero46",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Hylos",
+      "description": "Tank",
+      "imageRes": "hero47",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Zhask",
+      "description": "Mage",
+      "imageRes": "hero48",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Helcurt",
+      "description": "Assasin",
+      "imageRes": "hero49",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Pharsa",
+      "description": "Mage",
+      "imageRes": "hero50",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Lesley",
+      "description": "Marksman",
+      "imageRes": "hero51",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Jawhead",
+      "description": "Fighter",
+      "imageRes": "hero52",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Angela",
+      "description": "Tank",
+      "imageRes": "hero53",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Gusion",
+      "description": "Assasin",
+      "imageRes": "hero54",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Valir",
+      "description": "Mage",
+      "imageRes": "hero55",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Martis",
+      "description": "Assasin",
+      "imageRes": "hero56",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Uranus",
+      "description": "Fighter",
+      "imageRes": "hero57",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Hanabi",
+      "description": "Marksman",
+      "imageRes": "hero58",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Chang'e",
+      "description": "Mage",
+      "imageRes": "hero59",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Kaja",
+      "description": "Tank",
+      "imageRes": "hero60",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Selena",
+      "description": "Tank",
+      "imageRes": "hero61",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Aldous",
+      "description": "Fighter",
+      "imageRes": "hero62",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Claude",
+      "description": "Marksman",
+      "imageRes": "hero63",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Vale",
+      "description": "Mage",
+      "imageRes": "hero64",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Leomord",
+      "description": "Assasin",
+      "imageRes": "hero65",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Lunox",
+      "description": "Mage",
+      "imageRes": "hero66",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Hanzo",
+      "description": "Assasin",
+      "imageRes": "hero67",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Belerick",
+      "description": "Tank",
+      "imageRes": "hero68",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Kimmy",
+      "description": "Marksman",
+      "imageRes": "hero69",
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Thamuz",
+      "description": "Fighter",
+      "imageRes": "hero70",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Harith",
+      "description": "Mage",
+      "imageRes": "hero71",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Minshitar",
+      "description": "Fighter",
+      "imageRes": "hero72",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Kadita",
+      "description": "Mage",
+      "imageRes": "hero73",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Faramis",
+      "description": "Mage",
+      "imageRes": "hero74",
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Badang",
+      "description": "Fighter",
+      "imageRes": "hero75",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Kufra",
+      "description": "Tank",
+      "imageRes": "hero76",
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Granger",
+      "description": "Assasin",
+      "imageRes": "hero77",
+      "role": "Assasin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Guinevere",
+      "description": "Fighter",
+      "imageRes": "hero78",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Esmeralda",
+      "description": "Fighter",
+      "imageRes": "hero79",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
+    {
+      "name": "Terizla",
+      "description": "Fighter",
+      "imageRes": "hero80",
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
+    },
     {
       "name": "X.Borg",
       "description": "Fighter",
       "imageRes": "hero81",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Dyrroth",
       "description": "Fighter",
       "imageRes": "hero82",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Lylia",
       "description": "Mage",
       "imageRes": "hero83",
-      "role": "Mage"
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Baxia",
       "description": "Tank",
       "imageRes": "hero84",
-      "role": "Tank"
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Masha",
       "description": "Fighter",
       "imageRes": "hero85",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Wanwan",
       "description": "Marksman",
       "imageRes": "hero86",
-      "role": "Marksman"
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Silvana",
       "description": "Fighter",
       "imageRes": "hero87",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Cecilion",
       "description": "Mage",
       "imageRes": "hero88",
-      "role": "Mage"
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Camila",
       "description": "Tank",
       "imageRes": "hero89",
-      "role": "Tank"
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Atlas",
       "description": "Tank",
       "imageRes": "hero90",
-      "role": "Tank"
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Popol & Kupa",
       "description": "Assassin",
       "imageRes": "hero91",
-      "role": "Assassin"
+      "role": "Assassin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Yu Zhong",
       "description": "Fighter",
       "imageRes": "hero92",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Luo Yi",
       "description": "Mage",
       "imageRes": "hero93",
-      "role": "Mage"
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Beneddeta",
       "description": "Fighter",
       "imageRes": "hero94",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Khaleed",
       "description": "Fighter",
       "imageRes": "hero95",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Barats",
       "description": "Assassin",
       "imageRes": "hero96",
-      "role": "Assassin"
+      "role": "Assassin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Brody",
       "description": "Marksman",
       "imageRes": "hero97",
-      "role": "Marksman"
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Yve",
       "description": "Mage",
       "imageRes": "hero98",
-      "role": "Mage"
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Mathilda",
       "description": "Tank",
       "imageRes": "hero99",
-      "role": "Tank"
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Paquito",
       "description": "Fighter",
       "imageRes": "hero100",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Gloo",
       "description": "Fighter",
       "imageRes": "hero102",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Beatrix",
       "description": "Marksman",
       "imageRes": "hero103",
-      "role": "Marksman"
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Phoveus",
       "description": "Fighter",
       "imageRes": "hero104",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Nathan",
       "description": "Marksman",
       "imageRes": "hero105",
-      "role": "Marksman"
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Aulus",
       "description": "Assassin",
       "imageRes": "hero106",
-      "role": "Assassin"
+      "role": "Assassin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Aamon",
       "description": "Assassin",
       "imageRes": "hero107",
-      "role": "Assassin"
+      "role": "Assassin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Valentina",
       "description": "Mage",
       "imageRes": "hero108",
-      "role": "Mage"
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Edith",
       "description": "Fighter",
       "imageRes": "hero109",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Floryn",
       "description": "Tank",
       "imageRes": "hero110",
-      "role": "Tank"
+      "role": "Tank",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Yin",
       "description": "Assassin",
       "imageRes": "hero111",
-      "role": "Assassin"
+      "role": "Assassin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Melissa",
       "description": "Marksman",
       "imageRes": "hero112",
-      "role": "Marksman"
+      "role": "Marksman",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Xavier",
       "description": "Mage",
       "imageRes": "hero113",
-      "role": "Mage"
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Julian",
       "description": "Assassin",
       "imageRes": "hero114",
-      "role": "Assassin"
+      "role": "Assassin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Fredrin",
       "description": "Assassin",
       "imageRes": "hero115",
-      "role": "Assassin"
+      "role": "Assassin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Joy",
       "description": "Assassin",
       "imageRes": "hero116",
-      "role": "Assassin"
+      "role": "Assassin",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Novaria",
       "description": "Mage",
       "imageRes": "hero117",
-      "role": "Mage"
+      "role": "Mage",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     },
     {
       "name": "Arlot",
       "description": "Fighter",
       "imageRes": "hero118",
-      "role": "Fighter"
+      "role": "Fighter",
+      "bp": "",
+      "dm": "",
+      "tiket": "",
+      "rolee": "",
+      "type": "",
+      "story": ""
     }
 
 ]

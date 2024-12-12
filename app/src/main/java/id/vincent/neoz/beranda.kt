@@ -57,13 +57,7 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
     private lateinit var networkChangeReceiver: NetworkChangeReceiver
     private var isWaitingForUserAction = false // Flag to control if user needs to press the button
 
-    // Data class Hero
-    data class Hero(
-        @SerializedName("name") val name: String,
-        @SerializedName("description") val description: String,
-        @SerializedName("imageRes") val imageRes: String,
-        @SerializedName("role") val role: String
-    )
+
 
 
 

@@ -4,6 +4,20 @@
     "textpatch" : "Buff",
     "titleHero" : "Claude",
     "imageHero" : "hero1",
-    "descHero" : "Update.."
-  }
+    "descHero" : "Update..",
+    "update" : "UpdateHero",
+    "type" : "Chase"
+  },{
+  "patch" : "penyesuaian",
+  "textpatch" : "Penyesuaian",
+  "titleHero" : "Claude",
+  "imageHero" : "hero1",
+  "descHero" : "Update.."
+},{
+  "patch" : "nerf",
+  "textpatch" : "Nerf",
+  "titleHero" : "Claude",
+  "imageHero" : "hero1",
+  "descHero" : "Update.."
+}
 ]
