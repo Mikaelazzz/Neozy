@@ -1,14 +1,18 @@
 package id.vincent.neoz
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,16 +24,13 @@ class heroes : Fragment() {
         ViewModelProvider(requireActivity())[HeroViewModel::class.java]
     }
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.heroes, container, false)
-
-        // Setup RecyclerViews
         setupRecyclerViews(view)
-
         return view
     }
 
@@ -44,62 +45,195 @@ class heroes : Fragment() {
 
         // RecyclerView untuk daftar hero
         val heroRecyclerView = view.findViewById<RecyclerView>(R.id.list_hero)
-        val heroAdapter = HeroAdapter(sortedHeroes)
-        heroRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        heroRecyclerView.adapter = heroAdapter
+        val paginatedHeroAdapter = PaginatedHeroAdapter()
+        val linearLayoutManager = LinearLayoutManager(requireContext())
+        heroRecyclerView.layoutManager = linearLayoutManager
+        heroRecyclerView.adapter = paginatedHeroAdapter
+
+        // Initial load with first 10 heroes
+        paginatedHeroAdapter.setInitialData(sortedHeroes)
+
+        // Dalam fungsi setupRecyclerViews
+        val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
+        // Dalam fungsi setupRecyclerViews
+        val handler = Handler(Looper.getMainLooper())
+// Add scroll listener for pagination
+        heroRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val visibleItemCount = linearLayoutManager.childCount
+                val totalItemCount = linearLayoutManager.itemCount
+                val firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
+
+                if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount
+                    && firstVisibleItemPosition >= 0
+                    && paginatedHeroAdapter.canLoadMore()) {
+                    // Tampilkan progress bar
+                    progressBar.visibility = View.VISIBLE
+
+                    // Tambahkan delay sebelum memuat data berikutnya
+                    handler.postDelayed({
+                        paginatedHeroAdapter.loadNextPage()
+                        progressBar.visibility = View.GONE
+                    }, 500) // 0.5s
+                }
+            }
+        })
 
         // Adapter untuk tombol filter
         recyclerButtons.adapter = ButtonsAdapter(buttons) { role ->
-            if (role == "All") {
-                heroAdapter.updateData(sortedHeroes)
-            } else {
-                val filteredHeroes = heroViewModel.heroesList.filter { it.role == role }
-                heroAdapter.updateData(filteredHeroes)
+            val filteredHeroes = when (role) {
+                "All" -> heroViewModel.heroesList.sortedBy { it.name }
+                else -> heroViewModel.heroesList.filter { it.role == role }.sortedBy { it.name }
             }
+            paginatedHeroAdapter.updateFilteredData(filteredHeroes)
         }
     }
 
-    // HeroAdapter
-    class HeroAdapter(private var heroes: List<Hero>) :
-        RecyclerView.Adapter<HeroAdapter.HeroViewHolder>() {
-
-        class HeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val name: TextView = itemView.findViewById(R.id.title)
-            val description: TextView = itemView.findViewById(R.id.desc)
-            val image: ImageView = itemView.findViewById(R.id.images)
+    // Paginated Hero Adapter with incremental loading and animations
+    class PaginatedHeroAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        companion object {
+            private const val PAGE_SIZE = 10
+            private const val ANIMATION_DURATION = 300L
+            private const val LOAD_DELAY = 300L // Delay antar item
+            private const val AUTO_LOAD_DELAY = 1500L // Delay sebelum memuat item selanjutnya
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
+        private var originalHeroes: List<Hero> = listOf()
+        private val displayedHeroes: MutableList<Hero> = mutableListOf()
+        private var loadedItemCount = 0
+        private var hasMoreData = true
+        private val handler = Handler(Looper.getMainLooper())
+        private var isLoading = false
+
+        fun setInitialData(heroes: List<Hero>) {
+            originalHeroes = heroes
+            displayedHeroes.clear()
+            loadedItemCount = 0
+            hasMoreData = true
+            isLoading = false
+
+            // Muat 10 item pertama
+            loadInitialPage()
+
+            // Mulai proses auto-load
+            scheduleAutoLoad()
+        }
+
+        private fun loadInitialPage() {
+            val initialPageSize = minOf(PAGE_SIZE, originalHeroes.size)
+            for (i in 0 until initialPageSize) {
+                displayedHeroes.add(originalHeroes[i])
+            }
+            loadedItemCount = initialPageSize
+            hasMoreData = loadedItemCount < originalHeroes.size
+            notifyDataSetChanged()
+        }
+
+        private fun scheduleAutoLoad() {
+            // Jika masih ada data yang bisa dimuat
+            if (canLoadMore() && !isLoading) {
+                handler.postDelayed({
+                    loadNextPage()
+                }, AUTO_LOAD_DELAY)
+            }
+        }
+
+        fun updateFilteredData(heroes: List<Hero>) {
+            originalHeroes = heroes
+            displayedHeroes.clear()
+            loadedItemCount = 0
+            hasMoreData = true
+            isLoading = false
+
+            // Muat 10 item pertama setelah filter
+            loadInitialPage()
+
+            // Mulai proses auto-load
+            scheduleAutoLoad()
+        }
+
+        fun canLoadMore() = hasMoreData && loadedItemCount < originalHeroes.size
+
+        fun loadNextPage() {
+            if (!canLoadMore() || isLoading) return
+
+            isLoading = true
+            val remainingItems = originalHeroes.size - loadedItemCount
+            val itemsToLoad = minOf(PAGE_SIZE, remainingItems)
+
+            for (i in 0 until itemsToLoad) {
+                handler.postDelayed({
+                    if (loadedItemCount < originalHeroes.size) {
+                        displayedHeroes.add(originalHeroes[loadedItemCount])
+                        notifyItemInserted(displayedHeroes.size - 1)
+                        loadedItemCount++
+
+                        // Jika ini adalah item terakhir yang dimuat
+                        if (i == itemsToLoad - 1) {
+                            isLoading = false
+
+                            // Jadwalkan auto-load berikutnya
+                            scheduleAutoLoad()
+                        }
+                    }
+                }, i * LOAD_DELAY)
+            }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.list_heroes, parent, false)
             return HeroViewHolder(view)
         }
 
-        override fun onBindViewHolder(holder: HeroViewHolder, position: Int) {
-            val hero = heroes[position]
-            holder.name.text = hero.name
-            holder.description.text = hero.description
-            holder.image.setImageResource(
-                holder.itemView.context.resources.getIdentifier(hero.imageRes, "drawable", holder.itemView.context.packageName)
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            val heroHolder = holder as HeroViewHolder
+            val hero = displayedHeroes[position]
+
+            heroHolder.name.text = hero.name
+            heroHolder.description.text = hero.description
+            heroHolder.image.setImageResource(
+                heroHolder.itemView.context.resources.getIdentifier(
+                    hero.imageRes,
+                    "drawable",
+                    heroHolder.itemView.context.packageName
+                )
             )
 
+            // Animate item entry
+            animateItemEntry(heroHolder.itemView, position)
         }
 
-        override fun getItemCount(): Int = heroes.size
+        private fun animateItemEntry(itemView: View, position: Int) {
+            // Slide and fade animation
+            val translationY = ObjectAnimator.ofFloat(itemView, "translationY", 100f, 0f)
 
-        fun updateData(newHeroes: List<Hero>) {
-            heroes = newHeroes
-            notifyDataSetChanged()
+
+            AnimatorSet().apply {
+                playTogether(translationY)
+                duration = ANIMATION_DURATION + (position * 50L) // Stagger effect
+                start()
+            }
+        }
+
+        override fun getItemCount(): Int = displayedHeroes.size
+
+        // Hero View Holder (tetap sama)
+        class HeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val name: TextView = itemView.findViewById(R.id.title)
+            val description: TextView = itemView.findViewById(R.id.desc)
+            val image: ImageView = itemView.findViewById(R.id.images)
         }
     }
 
-    // ButtonsAdapter
+    // ButtonsAdapter remains the same as in the previous implementation
     class ButtonsAdapter(
         private val items: List<String>,
         private val onClick: (String) -> Unit
     ) : RecyclerView.Adapter<ButtonsAdapter.ButtonViewHolder>() {
 
-        private var activeRole: String = "All" // Menyimpan role aktif
+        private var activeRole: String = "All"
 
         inner class ButtonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val button: Button = view.findViewById(R.id.button)
@@ -114,16 +248,13 @@ class heroes : Fragment() {
             val role = items[position]
             holder.button.text = role
 
-            // Update tampilan tombol berdasarkan apakah role aktif
             val isActive = role == activeRole
             holder.button.isActivated = isActive
 
-
-            // Menangani klik tombol
             holder.button.setOnClickListener {
-                activeRole = role // Set role aktif
-                onClick(role) // Panggil callback untuk memfilter data
-                notifyDataSetChanged() // Perbarui tampilan RecyclerView
+                activeRole = role
+                onClick(role)
+                notifyDataSetChanged()
             }
         }
 
