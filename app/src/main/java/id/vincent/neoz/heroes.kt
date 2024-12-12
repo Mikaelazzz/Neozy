@@ -2,9 +2,12 @@ package id.vincent.neoz
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +19,63 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import id.vincent.neoz.beranda.Hero
+import com.google.gson.annotations.SerializedName
+
 
 class heroes : Fragment() {
+    // Data class Hero
+    data class Hero(
+        @SerializedName("name") val name: String,
+        @SerializedName("description") val description: String,
+        @SerializedName("imageRes") val imageRes: String,
+        @SerializedName("role") val role: String,
+        @SerializedName("bp") val bp: String,
+        @SerializedName("dm") val dm: String,
+        @SerializedName("tiket") val tiket: String,
+        @SerializedName("rolee") val rolee: String,
+        @SerializedName("type") val type: String,
+        @SerializedName("story") val story: String
+    ) : Parcelable {
+        constructor(parcel: Parcel) : this(
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!
+        )
+
+        override fun writeToParcel(parcel: Parcel, flags: Int) {
+            parcel.writeString(name)
+            parcel.writeString(description)
+            parcel.writeString(imageRes)
+            parcel.writeString(role)
+            parcel.writeString(bp)
+            parcel.writeString(dm)
+            parcel.writeString(tiket)
+            parcel.writeString(rolee)
+            parcel.writeString(type)
+            parcel.writeString(story)
+        }
+
+        override fun describeContents(): Int {
+            return 0
+        }
+
+        companion object CREATOR : Parcelable.Creator<Hero> {
+            override fun createFromParcel(parcel: Parcel): Hero {
+                return Hero(parcel)
+            }
+
+            override fun newArray(size: Int): Array<Hero?> {
+                return arrayOfNulls(size)
+            }
+        }
+    }
 
 
     private val heroViewModel: HeroViewModel by lazy {
@@ -53,6 +110,13 @@ class heroes : Fragment() {
 
         // Initial load with first 10 heroes
         paginatedHeroAdapter.setInitialData(sortedHeroes)
+        paginatedHeroAdapter.setOnItemClickListener(object : PaginatedHeroAdapter.OnItemClickListener {
+            override fun onItemClick(hero: Hero) {
+                val intent = Intent(requireContext(), tampilanhero::class.java)
+                intent.putExtra("hero", hero)
+                startActivity(intent)
+            }
+        })
 
         // Dalam fungsi setupRecyclerViews
         val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
@@ -98,6 +162,16 @@ class heroes : Fragment() {
             private const val ANIMATION_DURATION = 100L
             private const val LOAD_DELAY = 300L // Delay antar item
             private const val AUTO_LOAD_DELAY = 2000L // Delay sebelum memuat item selanjutnya
+        }
+
+        interface OnItemClickListener {
+            fun onItemClick(hero: Hero)
+        }
+
+        private var onItemClickListener: OnItemClickListener? = null
+
+        fun setOnItemClickListener(listener: OnItemClickListener) {
+            onItemClickListener = listener
         }
 
         private var originalHeroes: List<Hero> = listOf()
@@ -201,6 +275,18 @@ class heroes : Fragment() {
                     heroHolder.itemView.context.packageName
                 )
             )
+            val context = heroHolder.itemView.context
+            val imageResId = context.resources.getIdentifier(hero.imageRes, "drawable", context.packageName)
+            if (imageResId != 0) {
+                heroHolder.image.setImageResource(imageResId)
+            } else {
+                heroHolder.image.setImageResource(R.drawable.hero) // Gambar default jika tidak ditemukan
+            }
+
+            holder.itemView.setOnClickListener {
+                onItemClickListener?.onItemClick(hero)
+            }
+
 
             // Animate item entry
             animateItemEntry(heroHolder.itemView, position)

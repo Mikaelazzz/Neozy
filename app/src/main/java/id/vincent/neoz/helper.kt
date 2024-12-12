@@ -6,9 +6,9 @@ import com.google.gson.reflect.TypeToken
 
 
 object HeroRepository {
-    fun loadHeroes(context: Context): List<beranda.Hero> {
+    fun loadHeroes(context: Context): List<heroes.Hero> {
         val jsonString = context.assets.open("heroes.json").bufferedReader().use { it.readText() }
-        val listType = object : TypeToken<List<beranda.Hero>>() {}.type
+        val listType = object : TypeToken<List<heroes.Hero>>() {}.type
         return Gson().fromJson(jsonString, listType)
     }
 

@@ -12,8 +12,8 @@ import com.google.gson.reflect.TypeToken
 
 class PatchViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _patchlist = MutableLiveData<List<UPatch>>()
-    val patchlist: LiveData<List<UPatch>> get() = _patchlist
+    private val _patchlist = MutableLiveData<List<patch.UPatch>>()
+    val patchlist: LiveData<List<patch.UPatch>> get() = _patchlist
 
     init {
         loadDataFromJson()
@@ -24,8 +24,8 @@ class PatchViewModel(application: Application) : AndroidViewModel(application) {
             val context = getApplication<Application>().applicationContext
             val json = context.assets.open("heropatch.json").bufferedReader().use { it.readText() }
 
-            val type = object : TypeToken<List<UPatch>>() {}.type
-            val patchs: List<UPatch> = Gson().fromJson(json, type)
+            val type = object : TypeToken<List<patch.UPatch>>() {}.type
+            val patchs: List<patch.UPatch> = Gson().fromJson(json, type)
 
             _patchlist.value = patchs
         } catch (e: Exception) {

@@ -11,13 +11,13 @@
   "patch" : "penyesuaian",
   "textpatch" : "Penyesuaian",
   "titleHero" : "Claude",
-  "imageHero" : "hero1",
+  "imageHero" : "hero2",
   "descHero" : "Update.."
 },{
   "patch" : "nerf",
   "textpatch" : "Nerf",
   "titleHero" : "Claude",
-  "imageHero" : "hero1",
+  "imageHero" : "hero3",
   "descHero" : "Update.."
 }
 ]

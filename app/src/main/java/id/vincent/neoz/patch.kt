@@ -1,6 +1,9 @@
 package id.vincent.neoz
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,16 +16,57 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.annotations.SerializedName
 
-// Model Patch untuk data JSON
-data class UPatch(
-    @SerializedName("titleHero") val titleHero: String,
-    @SerializedName("descHero") val descHero: String,
-    @SerializedName("imageHero") val imageHero: String,
-    @SerializedName("patch") val patch: String,
-    @SerializedName("textpatch") val textpatch: String
-)
+
+
+
 
 class patch : Fragment() {
+
+
+    data class UPatch(
+        @SerializedName("patch") val patch: String,
+        @SerializedName("textpatch") val textpatch: String,
+        @SerializedName("titleHero") val titleHero: String,
+        @SerializedName("imageHero") val imageHero: String,
+        @SerializedName("descHero") val descHero: String,
+        @SerializedName("update") val update: String,
+        @SerializedName("type") val type: String
+    ) : Parcelable {
+        // Implementasi manual jika diperlukan
+        constructor(parcel: Parcel) : this(
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: ""
+        )
+
+        override fun writeToParcel(parcel: Parcel, flags: Int) {
+            parcel.writeString(patch)
+            parcel.writeString(textpatch)
+            parcel.writeString(titleHero)
+            parcel.writeString(imageHero)
+            parcel.writeString(descHero)
+            parcel.writeString(update)
+            parcel.writeString(type)
+        }
+
+        override fun describeContents(): Int {
+            return 0
+        }
+
+        companion object CREATOR : Parcelable.Creator<UPatch> {
+            override fun createFromParcel(parcel: Parcel): UPatch {
+                return UPatch(parcel)
+            }
+
+            override fun newArray(size: Int): Array<UPatch?> {
+                return arrayOfNulls(size)
+            }
+        }
+    }
 
     private val patchViewModel: PatchViewModel by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[PatchViewModel::class.java]
@@ -44,12 +88,18 @@ class patch : Fragment() {
     private fun setupRecyclerView(view: View) {
         val recyclerView: RecyclerView = view.findViewById(R.id.list_patch)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val adapter = PatchAdapter(emptyList())
+        val adapter = PatchAdapter(emptyList()) { selectedPatch ->
+            // Navigasi ke UpdatePatchActivity
+            val intent = Intent(requireContext(), updatepatch::class.java).apply {
+                putExtra("PATCH_DATA", selectedPatch)
+            }
+            startActivity(intent)
+        }
         recyclerView.adapter = adapter
     }
 
     // Adapter untuk RecyclerView
-    class PatchAdapter(private var patches: List<UPatch>) :
+    class PatchAdapter(private var patches: List<UPatch>, private val onItemClick: (UPatch) -> Unit) :
         RecyclerView.Adapter<PatchAdapter.PatchViewHolder>() {
 
         // ViewHolder untuk mengikat data
@@ -85,6 +135,11 @@ class patch : Fragment() {
             patch.patch, "drawable", holder.itemView.context.packageName
         )
         holder.pimg.setBackgroundResource(patchResId)
+            holder.itemView.setOnClickListener {
+                onItemClick(patch)
+            }
+
+
     }
 
     override fun getItemCount(): Int = patches.size
