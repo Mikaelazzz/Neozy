@@ -12,19 +12,32 @@
 
     <!-- Fixed Buttons Section -->
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp"
+        tools:listitem="@layout/item_button"
+        android:nestedScrollingEnabled="false"
+        tools:ignore="MissingConstraints" />
 
     <!-- Scrollable List Section -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="73dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_item"

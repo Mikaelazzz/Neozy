@@ -38,7 +38,7 @@ class NoInternetFragment : Fragment(R.layout.internet) {
 
                 progressBar.visibility = View.GONE
                 retryButton.isEnabled = true
-            }, 2000)
+            }, 1500)
         }
     }
 }

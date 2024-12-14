@@ -169,7 +169,7 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
                     showNoInternetLayout()
                 }
             }
-        }, 2000) // 2 detik delay
+        }, 1500) // 2 detik delay
     }
 
 

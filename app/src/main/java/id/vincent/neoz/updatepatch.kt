@@ -18,20 +18,19 @@ class updatepatch : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        val titleTextView = toolbar.findViewById<TextView>(androidx.appcompat.R.id.action_bar_title)
-        if (titleTextView != null) {
-            val poppinsSemiBold = ResourcesCompat.getFont(this, R.font.poppinsbold)
-            titleTextView.typeface = poppinsSemiBold
-        }
+        val textToolbar = findViewById<TextView>(R.id.texttoolbar)
+        val poppinsSemiBold = ResourcesCompat.getFont(this, R.font.poppinsbold)
+        textToolbar.typeface = poppinsSemiBold
 
         // Ambil data patch dari intent
         val patchData = intent.getParcelableExtra<patch.UPatch>("PATCH_DATA")
 
         patchData?.let { patch ->
 
-            supportActionBar?.title = "Patch - ${patch.titleHero}"
+            textToolbar.text = "Patch - ${patch.titleHero}"
 
             // Temukan view yang akan diupdate
             val titleTextView = findViewById<TextView>(R.id.title)

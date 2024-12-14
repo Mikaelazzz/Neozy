@@ -15,6 +15,10 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
     private val _itemlist = MutableLiveData<List<Item>>()
     val itemlist: LiveData<List<Item>> get() = _itemlist
 
+    private var allItems: List<Item> = emptyList() // Data lengkap untuk semua item
+    private val _filteredItems = MutableLiveData<List<Item>>()
+    val filteredItems: LiveData<List<Item>> get() = _filteredItems
+
     init {
         loadDataFromJson()
     }
@@ -25,12 +29,19 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
             val json = context.assets.open("item.json").bufferedReader().use { it.readText() }
 
             val type = object : TypeToken<List<Item>>() {}.type
-            val items: List<Item> = Gson().fromJson(json, type)
-
-            _itemlist.value = items
+            allItems = Gson().fromJson(json, type)
+//            val items: List<Item> = Gson().fromJson(json, type)
+//            _itemlist.value = items
+            _itemlist.value = allItems
+            _filteredItems.value = allItems // Tampilkan semua item sebagai default
         } catch (e: Exception) {
             e.printStackTrace()
             _itemlist.value = emptyList()
+            _filteredItems.value = emptyList()
         }
     }
+    fun filterItemsByRole(role: String) {
+        _filteredItems.value = if (role == "all") allItems else allItems.filter { it.role == role }
+    }
 }
+

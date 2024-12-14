@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -23,7 +24,8 @@ data class Item(
     @SerializedName("item4") val item4: String,
     @SerializedName("item5") val item5: String,
     @SerializedName("item6") val item6: String,
-    @SerializedName("deskripsiItem") val deskripsiItem: String
+    @SerializedName("deskripsiItem") val deskripsiItem: String,
+    @SerializedName("role") val role: String // Tambahkan properti role
 )
 
 class itemhero : Fragment() {
@@ -33,16 +35,15 @@ class itemhero : Fragment() {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[ItemViewModel::class.java]
     }
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.itemhero, container, false)
         setupRecyclerView(view)
+        setupRoleButtons(view)
 
-        itemViewModel.itemlist.observe(viewLifecycleOwner) { items ->
+        // Observe data filtered by role
+        itemViewModel.filteredItems.observe(viewLifecycleOwner) { items ->
             (view.findViewById<RecyclerView>(R.id.list_item).adapter as ItemAdapter).updateData(items)
         }
 
@@ -54,6 +55,41 @@ class itemhero : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val adapter = ItemAdapter(emptyList()) // Set empty list as initial data
         recyclerView.adapter = adapter
+    }
+
+    private fun setupRoleButtons(view: View) {
+        val roleButtons = listOf("all", "physical", "magic", "tank", "movement", "roam", "jungler")
+        val recyclerButtons: RecyclerView = view.findViewById(R.id.recycler_buttons)
+
+        recyclerButtons.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val buttonAdapter = RoleButtonAdapter(roleButtons) { role ->
+            itemViewModel.filterItemsByRole(role) // Panggil filter berdasarkan role
+        }
+        recyclerButtons.adapter = buttonAdapter
+    }
+
+    // Adapter untuk tombol role
+    class RoleButtonAdapter(
+        private val roles: List<String>,
+        private val onRoleSelected: (String) -> Unit
+    ) : RecyclerView.Adapter<RoleButtonAdapter.RoleViewHolder>() {
+
+        inner class RoleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val button: Button = itemView.findViewById(R.id.button)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoleViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_button, parent, false)
+            return RoleViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: RoleViewHolder, position: Int) {
+            val role = roles[position]
+            holder.button.text = role.capitalize()
+            holder.button.setOnClickListener { onRoleSelected(role) }
+        }
+
+        override fun getItemCount(): Int = roles.size
     }
 
     // Adapter untuk RecyclerView

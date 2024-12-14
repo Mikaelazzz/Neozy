@@ -25,7 +25,17 @@
             app:navigationIcon="@drawable/baseline_arrow_back_ios_new_24"
             app:title=""
             app:titleTextColor="@color/font"
-            />
+            >
+            <TextView
+                android:id="@+id/texttoolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:text="halo"
+                android:textColor="@color/font"
+                android:textSize="25sp"
+                android:layout_marginTop="8dp"/>
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -37,7 +47,9 @@
         app:layout_constraintTop_toBottomOf="@+id/header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -53,7 +65,9 @@
                 android:layout_marginRight="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/back_page"
+                android:padding="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -112,8 +126,8 @@
                             android:textColor="@color/font"
                             android:textSize="22sp" />
                     </LinearLayout>
-                </LinearLayout>
 
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -164,6 +178,7 @@
                         android:textSize="15sp"
                         android:textColor="@color/font"/>
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -177,12 +192,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-
+                android:background="@drawable/back_page"
+                android:padding="15dp"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Deksripsi"
+                    android:text="Latar Belakang"
                     android:fontFamily="@font/poppinssemibold"
                     android:textSize="22sp"
                     android:textColor="@color/font"/>
@@ -192,8 +208,10 @@
                     android:layout_height="wrap_content"
                     android:text="Deksripsi"
                     android:fontFamily="@font/poppinssemibold"
-                    android:textSize="17sp"
-                    android:textColor="@color/font"/>
+                    android:textSize="16sp"
+                    android:textColor="@color/font"
+                    android:justificationMode="inter_word"
+                    />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

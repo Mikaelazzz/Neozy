@@ -15,19 +15,18 @@ class tampilanhero : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        val titleTextView = toolbar.findViewById<TextView>(androidx.appcompat.R.id.action_bar_title)
-        if (titleTextView != null) {
-            val poppinsSemiBold = ResourcesCompat.getFont(this, R.font.poppinsbold)
-            titleTextView.typeface = poppinsSemiBold
-        }
+        val textToolbar = findViewById<TextView>(R.id.texttoolbar)
+        val poppinsSemiBold = ResourcesCompat.getFont(this, R.font.poppinsbold)
+        textToolbar.typeface = poppinsSemiBold
 
         val hero = intent.getParcelableExtra<heroes.Hero>("hero")
 
         if (hero != null) {
             // Set title setelah memastikan hero tidak null
-            supportActionBar?.title = "Detail - ${hero.name}"
+            textToolbar.text = "Detail - ${hero.name}"
 
             val titleTextView = findViewById<TextView>(R.id.title)
             val tipeTextView = findViewById<TextView>(R.id.tipe)
@@ -40,7 +39,7 @@ class tampilanhero : AppCompatActivity() {
 
 
             titleTextView.text = hero.name
-            tipeTextView.text = hero.role
+            tipeTextView.text = hero.type
             bpTextView.text = hero.bp
             dmTextView.text = hero.dm
             tiketTextView.text = hero.tiket

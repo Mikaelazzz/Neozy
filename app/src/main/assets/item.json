@@ -9,39 +9,67 @@
     "item4": "+90",
     "item5": "+90",
     "item6": "+90",
-    "deskripsiItem": "Tank"
+    "deskripsiItem": "Tank",
+    "role" : "physical"
   },{
   "namaItem": "Execute",
   "introItem": "Mengeliminasi HP Rendah",
-  "imageItem": "execute",
+  "imageItem": "vengeance",
   "item1": "+90",
   "item2": "+90",
   "item3": "+90",
   "item4": "+90",
   "item5": "+90",
   "item6": "+90",
-  "deskripsiItem": "Tank"
+  "deskripsiItem": "Tank",
+  "role" : "tank"
 },{
   "namaItem": "Execute",
   "introItem": "Mengeliminasi HP Rendah",
-  "imageItem": "execute",
+  "imageItem": "hero2",
   "item1": "+90",
   "item2": "+90",
   "item3": "+90",
   "item4": "+90",
   "item5": "+90",
   "item6": "+90",
-  "deskripsiItem": "Tank"
+  "deskripsiItem": "Tank",
+  "role" : "magic"
 },{
   "namaItem": "Execute",
   "introItem": "Mengeliminasi HP Rendah",
-  "imageItem": "execute",
+  "imageItem": "hero1",
   "item1": "+90",
   "item2": "+90",
   "item3": "+90",
   "item4": "+90",
   "item5": "+90",
   "item6": "+90",
-  "deskripsiItem": "Tank"
+  "deskripsiItem": "Tank",
+  "role" : "movement"
+},{
+  "namaItem": "Execute",
+  "introItem": "Mengeliminasi HP Rendah",
+  "imageItem": "hero16",
+  "item1": "+90",
+  "item2": "+90",
+  "item3": "+90",
+  "item4": "+90",
+  "item5": "+90",
+  "item6": "+90",
+  "deskripsiItem": "Tank",
+  "role" : "roam"
+},{
+  "namaItem": "Execute",
+  "introItem": "Mengeliminasi HP Rendah",
+  "imageItem": "hero17",
+  "item1": "+90",
+  "item2": "+90",
+  "item3": "+90",
+  "item4": "+90",
+  "item5": "+90",
+  "item6": "+90",
+  "deskripsiItem": "Tank",
+  "role" : "jungler"
 }
 ]
