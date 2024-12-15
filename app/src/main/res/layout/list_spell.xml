@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/div2"
     android:layout_width="match_parent"
-    android:layout_height="330dp"
-    android:maxHeight="350dp"
-    android:minHeight="100dp"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
-    android:layout_marginBottom="15dp"
-    android:orientation="vertical"
-    >
+    android:layout_marginBottom="15dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/back_card"
         android:paddingLeft="2.9dp"
         android:paddingRight="2.9dp"
         android:paddingBottom="3.2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
-        <ImageView
+        <LinearLayout
+            android:id="@+id/pembatas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignTop="@+id/pembatas2"
+            android:layout_alignBottom="@+id/pembatas5"
+            android:layout_marginTop="43dp"
             android:background="@drawable/card"
-            android:layout_marginTop="98dp"
-            android:layout_centerHorizontal="true">
-        </ImageView>
+            android:minHeight="370dp"
+            android:orientation="vertical" />
 
 
         <RelativeLayout
+            android:id="@+id/pembatas2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
@@ -41,21 +48,22 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:contentDescription="Logo"
-                android:src="@drawable/retri"
+                android:src="@drawable/phy1"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 />
             <ImageView
-                android:layout_width="78dp"
-                android:layout_height="78dp"
+                android:layout_width="81dp"
+                android:layout_height="81dp"
                 android:contentDescription="Logo"
                 android:src="@drawable/border"
-                android:layout_marginTop="5.9dp"
-                android:layout_marginLeft="11dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="9dp"
                 />
         </RelativeLayout>
 
         <TextView
+            android:layout_below="@+id/pembatas2"
             android:id="@+id/titleSpell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,9 +71,10 @@
             android:fontFamily="@font/poppinsbold"
             android:textColor="@color/font"
             android:textSize="24sp"
-            android:layout_marginTop="140dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            />
         <TextView
+            android:layout_below="@+id/titleSpell"
             android:id="@+id/subtitleSpell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,37 +82,51 @@
             android:fontFamily="@font/poppinssemibold"
             android:textColor="@color/font"
             android:textSize="14sp"
-            android:layout_marginTop="175dp"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:textAlignment="center"
             android:layout_centerHorizontal="true"/>
 
         <TextView
+            android:layout_below="@+id/subtitleSpell"
             android:id="@+id/cdSpell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cd spell"
+            android:text="Atribut Item"
             android:fontFamily="@font/poppinssemibold"
             android:textColor="@color/font"
             android:textSize="14sp"
-            android:layout_marginTop="195dp"
             android:layout_centerHorizontal="true"/>
-        <TextView
-            android:id="@+id/descSpell"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adding an index usually speeds up your select queries but will slow down other queries like insert or update. You should be careful when adding indices to ensure that this additional cost is worth the gain. There are 2 ways to define an index in an Entity ."
-            android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/font"
-            android:textSize="13sp"
-            android:layout_marginTop="221dp"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"/>
 
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cdSpell"
+            android:id="@+id/pembatas5"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            >
+            <TextView
+                android:id="@+id/descSpell"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Adding an index usually speeds up your select queries but will slow down other queries like insert or update. You should be careful when adding indices to ensure that this additional cost is worth the gain. There are 2 ways to define an index in an Entity ."
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/font"
+                android:textSize="13sp"
+                android:layout_centerHorizontal="true"
+                android:justificationMode="inter_word"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

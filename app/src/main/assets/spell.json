@@ -4,83 +4,83 @@
     "introSpell": "Mengeliminasi HP Rendah",
     "cdSpell": "90",
     "imageSpell": "execute",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Memberikan 100 (+10*Level Hero) + 13% dari HP target yang hilang sebagai True Damage ke target. Damage ini mengabaikan Shield. Jika target tereliminasi Skill ini, Cooldown akan berkurang 40%"
   },
   {
     "spell": "Retribution",
     "introSpell": "Khusus Jungler",
     "cdSpell": "35",
     "imageSpell": "retri",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Memberikan 520 (+80*Level Hero) True Damage ke Minion atau Creep yang ditargetkan. Pasif: Meningkatkan 60% hadiah Creep dan mengurangi 40%Damage dari Creep biasa. Juga memperoleh 15% Pengurangan Damage tambahan di area Jungle tim selama 2 menit pertama. Tidak dapat berbagi hadiah Minion dengan Hero rekan selama 5 menit pertama. Blessing: Kumpulkan 5 eliminasi Creep, Hero, atau Assist untuk memperkuat Battle Spell berdasarkan Blessing Jungling Boots, dan 15 eliminasi atau Assist untuk mendapatkan 10 Physical Attack dan Magic Power serta 100 Max HP."
   },
   {
     "spell": "Inspire",
     "introSpell": "Memperkuat Basic Attack",
     "cdSpell": "75",
     "imageSpell": "inspire",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Meningkatkan Attack Speed menjadi 1.5 kali dan batas Ättack Speed menjadi 500% untuk maksimal 8 Basic Attack dalam 5 detik berikutnya.Basic Attack juga mengabaikan 8 (+1*Level Hero) Physical Defense target dan memulihkan 60(+15%Total Physical Attack)(+15%Total Magic Power) HP saat mengenai lawan."
   },
   {
     "spell": "Sprint",
     "introSpell": "Meningkatkan Movement Speed",
     "cdSpell": "100",
     "imageSpell": "sprint",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Memperoleh 50% Movement Speed tambahan dan menjadi kebal Slow selama 6 detik."
   },
   {
     "spell": "Revitalize",
     "introSpell": "Pemulihan Area",
     "cdSpell": "75",
     "imageSpell": "revitalize",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Memanggil Healing Spring selama 4 detik, memulihkan 2.5% Max HP setiap 0.4 detik untuk Hero satu tim (termasuk Hero pengguna), serta meningkatkan 25% Shield dan HP Regen yang diterima (efek ini tidak dapat di-Stack)."
   },
   {
     "spell": "Aegis",
     "introSpell": "Melindungi Hero Empuk",
     "cdSpell": "75",
     "imageSpell": "aegis",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Memperoleh 750 (+90*Level Hero) Shield selama 5 detik."
   },
   {
     "spell": "Petrify",
     "introSpell": "Crowd Control Area",
     "cdSpell": "75",
     "imageSpell": "petrify",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Memberikan 100 (+15*Level Hero) Magic Damage kepada lawan yang berada di sekitarnya, menyebabkan Petrify selama 0.8 detik, dan menyebabkan 50% Slow kepada mereka selama 0.8 detik setelahnya."
   },
   {
     "spell": "Purify",
     "introSpell": "Menghapus Debuff",
     "cdSpell": "90",
     "imageSpell": "purify",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Menghapus semua Debuff (tidak termasuk Suppress)dan menjadi Kebal Crowd Control serta memperoleh 15% Movement Speed selama 1.2 detik."
   },
   {
     "spell": "Flameshot",
     "introSpell": "Menyerang & Bertahan",
     "cdSpell": "50",
     "imageSpell": "flameshot",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Menembakkan api ke arah yang ditentukan, menyebabkan Knockback kepada lawan di sekitar dan memberikan 200 (+50%Total Magic Power)-680(+170%Total Magic Power) Magic Damage (berskala dengan jarak terbang) kepada Hero lawan atau Creep pertama yang terkena."
   },
   {
     "spell": "Flicker",
     "introSpell": "Mobilitas",
     "cdSpell": "120",
     "imageSpell": "flicker",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Melakukan Blink dalam jarak tetap ke arah yang ditentukan serta memperoleh 5(+1*Level Hero)Physical & Magic Defense tambahan setelahnya selama 1 detik."
   },
   {
     "spell": "Arrival",
     "introSpell": "Bantuan dari Jarak Jauh",
     "cdSpell": "75",
     "imageSpell": "arrival",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Setelah mengumpulkan kekuatan selama 3 detik,berteleportasi ke Turret, Base, Minion, atau Trap rekan dan memperoleh 60% Movement Speed tambahan (berkurang dengan cepat dalam 3 detik)setelahnya. Jika proses pengumpulan kekuatan dibatalkan atau terganggu, 30 detik dari Cooldown Spell akan dikembalikan."
   },
   {
     "spell": "Vengeance",
     "introSpell": "Memantulkan Damage",
     "cdSpell": "75",
     "imageSpell": "vengeance",
-    "deskripsiSpell": "Tank"
+    "deskripsiSpell": "Selama 3 detik, memperoleh 35% Pengurangan Damage dan memberikan 35% Magic Damage kembali kepada lawan yang menyerang setiap kali Anda menerima Damage."
   }
 ]

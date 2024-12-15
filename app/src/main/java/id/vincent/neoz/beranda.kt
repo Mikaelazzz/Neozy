@@ -294,8 +294,9 @@ class beranda : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
                 replaceFragment(total())
             }
             R.id.aboutus -> {
-                titletool.text = "About Us"
+                titletool.text = "Support Us"
 //                title = "About Us"
+                replaceFragment(support())
                 // TODO: Add code to show About Us information
             }
         }

@@ -34,12 +34,12 @@
             <group>
                 <item
                     android:id="@+id/game"
-                    android:icon="@drawable/crown"
-                    android:title="Cek Nick Game"/>
+                    android:icon="@drawable/find"
+                    android:title="Search Nick Game"/>
                 <item
                     android:id="@+id/filter"
-                    android:icon="@drawable/emb"
-                    android:title="Filter Draft"/>
+                    android:icon="@drawable/dice"
+                    android:title="Random Draft"/>
             </group>
         </menu>
     </item>
@@ -72,10 +72,15 @@
         </menu>
     </item>
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/aboutus"
-            android:icon="@drawable/abt"
-            android:title="About Us"/>
-    </group>
+    <item
+        android:title="Information">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/aboutus"
+                    android:icon="@drawable/abt"
+                    android:title="Support Us"/>
+            </group>
+        </menu>
+    </item>
 </menu>

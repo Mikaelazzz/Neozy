@@ -30,10 +30,24 @@ class patch : Fragment() {
         @SerializedName("imageHero") val imageHero: String,
         @SerializedName("descHero") val descHero: String,
         @SerializedName("update") val update: String,
-        @SerializedName("type") val type: String
+        @SerializedName("type") val type: String,
+        @SerializedName("atribut") val atribute: String,
+        @SerializedName("pasif") val passive: String,
+        @SerializedName("skill1") val skill1: String,
+        @SerializedName("skill2") val skill2: String,
+        @SerializedName("skill3") val skill3: String,
+        @SerializedName("skill4") val skill4: String,
+        @SerializedName("ultimate") val ultimate: String
     ) : Parcelable {
         // Implementasi manual jika diperlukan
         constructor(parcel: Parcel) : this(
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
+            parcel.readString() ?: "",
             parcel.readString() ?: "",
             parcel.readString() ?: "",
             parcel.readString() ?: "",
@@ -51,6 +65,13 @@ class patch : Fragment() {
             parcel.writeString(descHero)
             parcel.writeString(update)
             parcel.writeString(type)
+            parcel.writeString(atribute)
+            parcel.writeString(passive)
+            parcel.writeString(skill1)
+            parcel.writeString(skill2)
+            parcel.writeString(skill3)
+            parcel.writeString(skill4)
+            parcel.writeString(ultimate)
         }
 
         override fun describeContents(): Int {
@@ -124,11 +145,15 @@ class patch : Fragment() {
             holder.intro.text = patch.descHero
             holder.ptext.text = patch.textpatch
 
+            // Mengambil gambar berdasarkan imageHero
             val imageResId = holder.itemView.context.resources.getIdentifier(
                 patch.imageHero, "drawable", holder.itemView.context.packageName
             )
-            holder.image.setBackgroundResource(imageResId)
-
+            if (imageResId != 0) {
+                holder.image.setImageResource(imageResId) // Menggunakan setImageResource untuk ImageView
+            } else {
+                holder.image.setImageResource(R.drawable.hero) // Gambar default jika tidak ditemukan
+            }
 
             // Menampilkan background untuk patch berdasarkan nama di patch
         val patchResId = holder.itemView.context.resources.getIdentifier(

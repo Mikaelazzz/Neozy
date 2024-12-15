@@ -19,6 +19,7 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
     private val _filteredItems = MutableLiveData<List<Item>>()
     val filteredItems: LiveData<List<Item>> get() = _filteredItems
 
+    private var cachedItems: List<Item> = listOf()
     init {
         loadDataFromJson()
     }
@@ -32,6 +33,7 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
             allItems = Gson().fromJson(json, type)
 //            val items: List<Item> = Gson().fromJson(json, type)
 //            _itemlist.value = items
+            cachedItems = allItems
             _itemlist.value = allItems
             _filteredItems.value = allItems // Tampilkan semua item sebagai default
         } catch (e: Exception) {
@@ -41,7 +43,12 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
     fun filterItemsByRole(role: String) {
-        _filteredItems.value = if (role == "all") allItems else allItems.filter { it.role == role }
+        val filtered = if (role == "all") {
+            cachedItems
+        } else {
+            cachedItems.filter { it.role.lowercase() == role.lowercase() }
+        }
+        _filteredItems.value = filtered
     }
 }
 

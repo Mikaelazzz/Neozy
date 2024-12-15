@@ -101,6 +101,14 @@ class heroes : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val buttons = listOf("All", "Tank", "Fighter", "Assassin", "Mage", "Marksman", "Support")
 
+        val rolesSet = mutableSetOf<String>()
+        sortedHeroes.forEach { hero ->
+            val roles = hero.role.split(",").map { it.trim() }
+            rolesSet.addAll(roles)
+        }
+        // Convert rolesSet menjadi list dan tambah "All" di awal
+//        val buttons = mutableListOf("All") + rolesSet.sorted()
+
         // RecyclerView untuk daftar hero
         val heroRecyclerView = view.findViewById<RecyclerView>(R.id.list_hero)
         val paginatedHeroAdapter = PaginatedHeroAdapter()
@@ -122,6 +130,7 @@ class heroes : Fragment() {
         val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
         // Dalam fungsi setupRecyclerViews
         val handler = Handler(Looper.getMainLooper())
+
 // Add scroll listener for pagination
         heroRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -140,7 +149,7 @@ class heroes : Fragment() {
                     handler.postDelayed({
                         paginatedHeroAdapter.loadNextPage()
                         progressBar.visibility = View.GONE
-                    }, 500) // 0.5s
+                    }, 1000) // 0.5s
                 }
             }
         })
@@ -149,7 +158,7 @@ class heroes : Fragment() {
         recyclerButtons.adapter = ButtonsAdapter(buttons) { role ->
             val filteredHeroes = when (role) {
                 "All" -> heroViewModel.heroesList.sortedBy { it.name }
-                else -> heroViewModel.heroesList.filter { it.role == role }.sortedBy { it.name }
+                else -> heroViewModel.heroesList.filter { it.role.split(",").map { r -> r.trim() }.contains(role) }.sortedBy { it.name }
             }
             paginatedHeroAdapter.updateFilteredData(filteredHeroes)
         }
@@ -159,8 +168,8 @@ class heroes : Fragment() {
     class PaginatedHeroAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         companion object {
             private const val PAGE_SIZE = 10
-            private const val ANIMATION_DURATION = 100L
-            private const val LOAD_DELAY = 300L // Delay antar item
+            private const val ANIMATION_DURATION = 150L
+            private const val LOAD_DELAY = 500L // Delay antar item
             private const val AUTO_LOAD_DELAY = 2000L // Delay sebelum memuat item selanjutnya
         }
 
@@ -228,6 +237,7 @@ class heroes : Fragment() {
             scheduleAutoLoad()
         }
 
+
         fun canLoadMore() = hasMoreData && loadedItemCount < originalHeroes.size
 
         fun loadNextPage() {
@@ -244,17 +254,15 @@ class heroes : Fragment() {
                         notifyItemInserted(displayedHeroes.size - 1)
                         loadedItemCount++
 
-                        // Jika ini adalah item terakhir yang dimuat
                         if (i == itemsToLoad - 1) {
                             isLoading = false
-
-                            // Jadwalkan auto-load berikutnya
                             scheduleAutoLoad()
                         }
                     }
                 }, i * LOAD_DELAY)
             }
         }
+
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val view = LayoutInflater.from(parent.context)

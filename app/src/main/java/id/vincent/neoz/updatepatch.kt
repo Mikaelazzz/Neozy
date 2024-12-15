@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.widget.Toolbar // Gunakan import ini
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-
 
 class updatepatch : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +28,6 @@ class updatepatch : AppCompatActivity() {
         val patchData = intent.getParcelableExtra<patch.UPatch>("PATCH_DATA")
 
         patchData?.let { patch ->
-
             textToolbar.text = "Patch - ${patch.titleHero}"
 
             // Temukan view yang akan diupdate
@@ -57,8 +55,11 @@ class updatepatch : AppCompatActivity() {
                     textPatchTextView.setTextColor(ContextCompat.getColor(this, R.color.font))
                 }
                 "penyesuaian" -> {
-                    // Default style jika tidak ada kategori khusus
                     patchLinearLayout.setBackgroundResource(R.drawable.penyesuaian)
+                    textPatchTextView.setTextColor(ContextCompat.getColor(this, R.color.font))
+                }
+                "new" -> {
+                    patchLinearLayout.setBackgroundResource(R.drawable.neww)
                     textPatchTextView.setTextColor(ContextCompat.getColor(this, R.color.font))
                 }
             }
@@ -72,12 +73,35 @@ class updatepatch : AppCompatActivity() {
             if (imageResId != 0) {
                 imageView.setImageResource(imageResId)
             }
+
+            // Set atribut, passive, skill1, skill2, skill3, ultimate jika ada
+            setTextOrHide(R.id.atribut, patch.atribute)
+            setTextOrHide(R.id.pasif, patch.passive)
+            setTextOrHide(R.id.skill1, patch.skill1)
+            setTextOrHide(R.id.skill2, patch.skill2)
+            setTextOrHide(R.id.skill3, patch.skill3)
+            setTextOrHide(R.id.skill4, patch.skill4)
+            setTextOrHide(R.id.ultimate, patch.ultimate)
         }
+
         // Tangani tombol back di toolbar
         toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
     }
+
+    private fun setTextOrHide(viewId: Int, text: String) {
+        val textView = findViewById<TextView>(viewId)
+        val parentLayout = textView.parent as LinearLayout
+
+        if (text.isEmpty()) {
+            parentLayout.visibility = LinearLayout.GONE // Sembunyikan LinearLayout jika kosong
+        } else {
+            textView.text = text
+            parentLayout.visibility = LinearLayout.VISIBLE // Tampilkan LinearLayout jika ada teks
+        }
+    }
+
     // Metode untuk menangani tombol back
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

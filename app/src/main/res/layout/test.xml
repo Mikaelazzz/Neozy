@@ -1,367 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/div2"
     android:layout_width="match_parent"
-    android:layout_height="530dp"
-    android:maxHeight="350dp"
-    android:minHeight="100dp"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
-    android:layout_marginBottom="15dp"
-    android:orientation="vertical"
-    >
+    android:layout_marginBottom="15dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/back_card"
         android:paddingLeft="2.9dp"
         android:paddingRight="2.9dp"
         android:paddingBottom="3.2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
-        <ImageView
+        <LinearLayout
+            android:id="@+id/pembatas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignTop="@+id/pembatas2"
+            android:layout_alignBottom="@+id/pembatas5"
+            android:layout_marginTop="43dp"
             android:background="@drawable/card"
-            android:layout_marginTop="98dp"
-            android:layout_centerHorizontal="true">
-        </ImageView>
+            android:minHeight="370dp"
+            android:orientation="vertical" />
 
 
         <RelativeLayout
+            android:id="@+id/pembatas2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             >
 
             <ImageView
-                android:id="@+id/imagesItem"
+                android:id="@+id/images"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:contentDescription="Logo"
-                android:src="@drawable/retri"
+                android:src="@drawable/phy1"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 />
             <ImageView
-                android:layout_width="78dp"
-                android:layout_height="78dp"
+                android:layout_width="81dp"
+                android:layout_height="81dp"
                 android:contentDescription="Logo"
                 android:src="@drawable/border"
-                android:layout_marginTop="5.9dp"
-                android:layout_marginLeft="11dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="9dp"
                 />
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/titleItem"
+            android:layout_below="@+id/pembatas2"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="nama spell"
             android:fontFamily="@font/poppinsbold"
             android:textColor="@color/font"
             android:textSize="24sp"
-            android:layout_marginTop="140dp"
-            android:layout_centerHorizontal="true"/>
-        <TextView
-            android:id="@+id/subtitleItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Intro spell"
-            android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/font"
-            android:textSize="14sp"
-            android:layout_marginTop="175dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:textAlignment="center"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            />
 
-        <TextView
-            android:id="@+id/cdSpell"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Atribut Item"
-            android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/font"
-            android:textSize="14sp"
-            android:layout_marginTop="195dp"
-            android:layout_centerHorizontal="true"/>
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
-        >
-            <LinearLayout
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp"
-                >
-                <TextView
-                    android:id="@+id/item1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Atribut Item1"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:textColor="@color/font"
-                    android:textSize="14sp"
-                    android:layout_marginTop="195dp"
-                    android:layout_centerHorizontal="true"/>
-                <TextView
-                    android:id="@+id/item2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Atribut Item2"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:textColor="@color/font"
-                    android:textSize="14sp"
-                    android:layout_marginTop="15dp"
-                    android:layout_centerHorizontal="true"/>
-                <TextView
-                    android:id="@+id/item3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Atribut Item3"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:textColor="@color/font"
-                    android:textSize="14sp"
-                    android:layout_marginTop="15dp"
-                    android:layout_centerHorizontal="true"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp"
-                >
-                <TextView
-                    android:id="@+id/item4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Atribut Item1"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:textColor="@color/font"
-                    android:textSize="14sp"
-                    android:layout_marginTop="195dp"
-                    android:layout_centerHorizontal="true"/>
-                <TextView
-                    android:id="@+id/item5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Atribut Item2"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:textColor="@color/font"
-                    android:textSize="14sp"
-                    android:layout_marginTop="15dp"
-                    android:layout_centerHorizontal="true"/>
-                <TextView
-                    android:id="@+id/item6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Atribut Item3"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:textColor="@color/font"
-                    android:textSize="14sp"
-                    android:layout_marginTop="15dp"
-                    android:layout_centerHorizontal="true"/>
-            </LinearLayout>
-        </LinearLayout>
-        <TextView
-            android:id="@+id/descItem"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adding an index usually speeds up your select queries but will slow down other queries like insert or update. You should be careful when adding indices to ensure that this additional cost is worth the gain. There are 2 ways to define an index in an Entity ."
-            android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/font"
-            android:textSize="13sp"
-            android:layout_marginTop="341dp"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"/>
+            android:layout_below="@id/title"
+            android:id="@+id/pembatas5"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            >
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="halo"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/font"
+                android:textSize="13sp"
+                android:layout_centerHorizontal="true"
+                android:justificationMode="inter_word"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                android:gravity="center"
+                />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 
 
-</LinearLayout>
-
-
-
-    <!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:id="@+id/div3"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="330dp"-->
-<!--    android:maxHeight="350dp"-->
-<!--    android:minHeight="100dp"-->
-<!--    android:layout_marginLeft="15dp"-->
-<!--    android:layout_marginRight="15dp"-->
-<!--    android:layout_marginBottom="15dp"-->
-<!--    android:orientation="vertical"-->
-<!--    >-->
-
-<!--&lt;!&ndash;    <RelativeLayout&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:background="@drawable/back_card"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:paddingLeft="4dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:paddingRight="4dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:paddingBottom="3.9dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        >&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:background="@drawable/card"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_marginTop="98dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_centerHorizontal="true">&ndash;&gt;-->
-<!--&lt;!&ndash;        </ImageView>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;        <RelativeLayout&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_marginTop="55dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_centerHorizontal="true"&ndash;&gt;-->
-<!--&lt;!&ndash;            >&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:id="@+id/imagesSpell"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="80dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="80dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:contentDescription="Logo"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:src="@drawable/retri"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_marginTop="5dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_marginLeft="10dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                />&ndash;&gt;-->
-<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="100dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="100dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:contentDescription="Logo"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:src="@drawable/mask_logo"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_marginTop="-6dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_marginLeft="0.8dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                />&ndash;&gt;-->
-<!--&lt;!&ndash;        </RelativeLayout>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/titleSpell"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:text="nama spell"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:fontFamily="@font/poppinsbold"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textColor="@color/font"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textSize="24sp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_marginTop="140dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_centerHorizontal="true"/>&ndash;&gt;-->
-<!--&lt;!&ndash;        <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/subtitleSpell"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:text="Intro spell"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:fontFamily="@font/poppinssemibold"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textColor="@color/font"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textSize="14sp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_marginTop="175dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:paddingLeft="12dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:paddingRight="12dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textAlignment="center"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_centerHorizontal="true"/>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/cdSpell"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:text="cd spell"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:fontFamily="@font/poppinssemibold"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textColor="@color/font"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textSize="14sp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_marginTop="195dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_centerHorizontal="true"/>&ndash;&gt;-->
-<!--&lt;!&ndash;        <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/descSpell"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:text="Adding an index usually speeds up your select queries but will slow down other queries like insert or update. You should be careful when adding indices to ensure that this additional cost is worth the gain. There are 2 ways to define an index in an Entity ."&ndash;&gt;-->
-<!--&lt;!&ndash;            android:fontFamily="@font/poppinssemibold"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textColor="@color/font"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textSize="13sp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_marginTop="221dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_centerHorizontal="true"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:textAlignment="center"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:paddingLeft="12dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:paddingRight="12dp"/>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    </RelativeLayout>&ndash;&gt;-->
-
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/div1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:layout_marginRight="10dp"-->
-<!--        android:layout_marginBottom="15dp"-->
-<!--        android:layout_marginTop="25dp"-->
-<!--        android:background="@drawable/back_card"-->
-<!--        android:paddingTop="3.9dp"-->
-<!--        android:paddingBottom="3.9dp"-->
-<!--        android:paddingRight="4.4dp"-->
-<!--        >-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:background="@drawable/card_heroes"-->
-<!--            android:layout_alignParentRight="true">-->
-<!--        </ImageView>-->
-
-
-<!--        <ImageView-->
-<!--            android:id="@+id/images"-->
-<!--            android:layout_width="75dp"-->
-<!--            android:layout_height="75dp"-->
-<!--            android:src="@drawable/retri"-->
-<!--            android:contentDescription="Logo"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_marginLeft="18dp"-->
-<!--            />-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:layout_marginStart="29dp"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/title"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:fontFamily="@font/poppinsbold"-->
-<!--                android:textColor="@color/font"-->
-<!--                android:text="halo"-->
-<!--                android:textSize="24sp"-->
-<!--                android:layout_marginLeft="85dp"/>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/desc"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="16sp"-->
-<!--                android:fontFamily="@font/poppinssemibold"-->
-<!--                android:textColor="@color/font"-->
-<!--                android:text="halo"-->
-<!--                android:textSize="20sp"-->
-<!--                android:layout_marginLeft="85dp"/>-->
-<!--        </LinearLayout>-->
-<!--    </RelativeLayout>-->
-
-
-<!--</LinearLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
