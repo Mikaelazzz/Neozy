@@ -31,8 +31,8 @@ class patch : Fragment() {
         @SerializedName("descHero") val descHero: String,
         @SerializedName("update") val update: String,
         @SerializedName("type") val type: String,
-        @SerializedName("atribut") val atributee: String,
-        @SerializedName("pasif") val passivee: String,
+        @SerializedName("atribut") val atribut: String,
+        @SerializedName("passive") val passive: String,
         @SerializedName("skill1") val skill1: String,
         @SerializedName("skill2") val skill2: String,
         @SerializedName("skill3") val skill3: String,
@@ -65,8 +65,8 @@ class patch : Fragment() {
             parcel.writeString(descHero)
             parcel.writeString(update)
             parcel.writeString(type)
-            parcel.writeString(atributee)
-            parcel.writeString(passivee)
+            parcel.writeString(atribut)
+            parcel.writeString(passive)
             parcel.writeString(skill1)
             parcel.writeString(skill2)
             parcel.writeString(skill3)

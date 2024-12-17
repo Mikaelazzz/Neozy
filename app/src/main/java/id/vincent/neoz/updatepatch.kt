@@ -75,7 +75,7 @@ class updatepatch : AppCompatActivity() {
             }
 
             // Set atribut, passive, skill1, skill2, skill3, ultimate jika ada
-            setTextOrHide(R.id.atribut, patch.atribute)
+            setTextOrHide(R.id.atribut, patch.atribut)
             setTextOrHide(R.id.pasif, patch.passive)
             setTextOrHide(R.id.skill1, patch.skill1)
             setTextOrHide(R.id.skill2, patch.skill2)
