@@ -98,6 +98,7 @@
                 android:textSize="14sp"
                 android:fontFamily="@font/poppinssemibold"
                 android:textColor="@color/font"
+                android:justificationMode="inter_word"
                 app:layout_constraintTop_toBottomOf="@id/titledesk"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
