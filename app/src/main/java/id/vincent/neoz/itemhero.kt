@@ -31,7 +31,7 @@ data class Item(
     @SerializedName("item5") val item5: String,
     @SerializedName("item6") val item6: String,
     @SerializedName("deskripsiItem") val deskripsiItem: String,
-    @SerializedName("role") val role: String // Tambahkan properti role
+    @SerializedName("role") val role: String
 )
 class itemhero : Fragment() {
 
@@ -181,6 +181,16 @@ class itemhero : Fragment() {
             itemHolder.i4.text = item.item4
             itemHolder.i5.text = item.item5
             itemHolder.i6.text = item.item6
+            itemHolder.descItem.text = item.deskripsiItem
+
+            // Set visibility based on data availability
+            itemHolder.i1.visibility = if (item.item1.isNotEmpty()) View.VISIBLE else View.GONE
+            itemHolder.i2.visibility = if (item.item2.isNotEmpty()) View.VISIBLE else View.GONE
+            itemHolder.i3.visibility = if (item.item3.isNotEmpty()) View.VISIBLE else View.GONE
+            itemHolder.i4.visibility = if (item.item4.isNotEmpty()) View.VISIBLE else View.GONE
+            itemHolder.i5.visibility = if (item.item5.isNotEmpty()) View.VISIBLE else View.GONE
+            itemHolder.i6.visibility = if (item.item6.isNotEmpty()) View.VISIBLE else View.GONE
+
 
             val imageResId = holder.itemView.context.resources.getIdentifier(
                 item.imageItem, "drawable", holder.itemView.context.packageName
@@ -210,6 +220,7 @@ class itemhero : Fragment() {
             val i4: TextView = itemView.findViewById(R.id.item4)
             val i5: TextView = itemView.findViewById(R.id.item5)
             val i6: TextView = itemView.findViewById(R.id.item6)
+            val descItem: TextView = itemView.findViewById(R.id.descItem)
             val image: ImageView = itemView.findViewById(R.id.imagesItem)
         }
     }
