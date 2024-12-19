@@ -44,26 +44,6 @@ class updatepatch : AppCompatActivity() {
             textPatchTextView.text = patch.textpatch
             updateHeroTextView.text = patch.update
 
-            // Set background dan teks untuk patch/buff berdasarkan data
-            when (patch.textpatch.lowercase()) {
-                "buff" -> {
-                    patchLinearLayout.setBackgroundResource(R.drawable.buff)
-                    textPatchTextView.setTextColor(ContextCompat.getColor(this, R.color.font))
-                }
-                "nerf" -> {
-                    patchLinearLayout.setBackgroundResource(R.drawable.nerf)
-                    textPatchTextView.setTextColor(ContextCompat.getColor(this, R.color.font))
-                }
-                "penyesuaian" -> {
-                    patchLinearLayout.setBackgroundResource(R.drawable.penyesuaian)
-                    textPatchTextView.setTextColor(ContextCompat.getColor(this, R.color.font))
-                }
-                "new" -> {
-                    patchLinearLayout.setBackgroundResource(R.drawable.neww)
-                    textPatchTextView.setTextColor(ContextCompat.getColor(this, R.color.font))
-                }
-            }
-
             // Set gambar
             val imageResId = resources.getIdentifier(
                 patch.imageHero,
@@ -82,6 +62,12 @@ class updatepatch : AppCompatActivity() {
             setTextOrHide(R.id.skill3, patch.skill3)
             setTextOrHide(R.id.skill4, patch.skill4)
             setTextOrHide(R.id.ultimate, patch.ultimate)
+
+            // Set background untuk patch berdasarkan data
+            val patchBackgroundResId = resources.getIdentifier(
+                patch.patch, "drawable", packageName
+            )
+            patchLinearLayout.setBackgroundResource(patchBackgroundResId)
         }
 
         // Tangani tombol back di toolbar
