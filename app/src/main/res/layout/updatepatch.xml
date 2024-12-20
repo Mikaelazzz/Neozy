@@ -93,7 +93,7 @@
                         android:id="@+id/title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppinssemibold"
+                        android:fontFamily="@font/poppinsbold"
                         android:text="nama"
                         android:textColor="@color/font"
                         android:textSize="22sp" />
@@ -105,7 +105,7 @@
                         android:fontFamily="@font/poppinssemibold"
                         android:text="nama"
                         android:textColor="@color/font"
-                        android:textSize="22sp" />
+                        android:textSize="17sp" />
 
                     <LinearLayout
                         android:id="@+id/patch"
