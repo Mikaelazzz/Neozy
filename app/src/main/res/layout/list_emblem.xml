@@ -36,7 +36,6 @@
             android:id="@+id/imageEmblem"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:src="@drawable/common"
             android:contentDescription="Logo"
             android:layout_centerVertical="true"
             android:layout_marginLeft="18dp"
