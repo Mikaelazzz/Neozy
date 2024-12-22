@@ -15,12 +15,13 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.gson.annotations.SerializedName
-
 
 class heroes : Fragment() {
     // Data class Hero
@@ -77,10 +78,10 @@ class heroes : Fragment() {
         }
     }
 
-
-    private val heroViewModel: HeroViewModel by lazy {
-        ViewModelProvider(requireActivity())[HeroViewModel::class.java]
-    }
+    private lateinit var heroViewModel: HeroViewModel
+    private lateinit var progressBar: ProgressBar
+    private lateinit var paginatedHeroAdapter: PaginatedHeroAdapter
+    private lateinit var heroRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -88,36 +89,53 @@ class heroes : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.heroes, container, false)
+
+        // Inisialisasi ProgressBar
+        progressBar = view.findViewById(R.id.progress_bar)
+
+        // Inisialisasi ViewModel
+        heroViewModel = ViewModelProvider(requireActivity())[HeroViewModel::class.java]
+
+        // Inisialisasi RecyclerView dan Adapter
         setupRecyclerViews(view)
+
+        // Observer untuk loading state
+        heroViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+
+        // Observer untuk error
+        heroViewModel.error.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Observer untuk daftar hero
+        heroViewModel.heroesList.observe(viewLifecycleOwner) { heroes ->
+            paginatedHeroAdapter.updateFilteredData(heroes)
+        }
+
         return view
     }
 
     private fun setupRecyclerViews(view: View) {
-        val sortedHeroes = heroViewModel.heroesList.sortedBy { it.name }
-
         // RecyclerView untuk tombol filter
         val recyclerButtons = view.findViewById<RecyclerView>(R.id.recycler_buttons)
         recyclerButtons.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        // Daftar role untuk filter
         val buttons = listOf("All", "Tank", "Fighter", "Assassin", "Mage", "Marksman", "Support")
 
-        val rolesSet = mutableSetOf<String>()
-        sortedHeroes.forEach { hero ->
-            val roles = hero.role.split(",").map { it.trim() }
-            rolesSet.addAll(roles)
-        }
-        // Convert rolesSet menjadi list dan tambah "All" di awal
-//        val buttons = mutableListOf("All") + rolesSet.sorted()
-
         // RecyclerView untuk daftar hero
-        val heroRecyclerView = view.findViewById<RecyclerView>(R.id.list_hero)
-        val paginatedHeroAdapter = PaginatedHeroAdapter()
+        heroRecyclerView = view.findViewById(R.id.list_hero)
+        paginatedHeroAdapter = PaginatedHeroAdapter()
         val linearLayoutManager = LinearLayoutManager(requireContext())
         heroRecyclerView.layoutManager = linearLayoutManager
         heroRecyclerView.adapter = paginatedHeroAdapter
 
-        // Initial load with first 10 heroes
-        paginatedHeroAdapter.setInitialData(sortedHeroes)
+        // Set click listener untuk item hero
         paginatedHeroAdapter.setOnItemClickListener(object : PaginatedHeroAdapter.OnItemClickListener {
             override fun onItemClick(hero: Hero) {
                 val intent = Intent(requireContext(), tampilanhero::class.java)
@@ -126,12 +144,7 @@ class heroes : Fragment() {
             }
         })
 
-        // Dalam fungsi setupRecyclerViews
-        val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
-        // Dalam fungsi setupRecyclerViews
-        val handler = Handler(Looper.getMainLooper())
-
-// Add scroll listener for pagination
+        // Tambahkan scroll listener untuk pagination
         heroRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -146,10 +159,10 @@ class heroes : Fragment() {
                     progressBar.visibility = View.VISIBLE
 
                     // Tambahkan delay sebelum memuat data berikutnya
-                    handler.postDelayed({
+                    Handler(Looper.getMainLooper()).postDelayed({
                         paginatedHeroAdapter.loadNextPage()
                         progressBar.visibility = View.GONE
-                    }, 1000) // 0.5s
+                    }, 1000)
                 }
             }
         })
@@ -157,20 +170,21 @@ class heroes : Fragment() {
         // Adapter untuk tombol filter
         recyclerButtons.adapter = ButtonsAdapter(buttons) { role ->
             val filteredHeroes = when (role) {
-                "All" -> heroViewModel.heroesList.sortedBy { it.name }
-                else -> heroViewModel.heroesList.filter { it.role.split(",").map { r -> r.trim() }.contains(role) }.sortedBy { it.name }
+                "All" -> heroViewModel.heroesList.value ?: emptyList()
+                else -> (heroViewModel.heroesList.value ?: emptyList())
+                    .filter { it.role.split(",").map { r -> r.trim() }.contains(role) }
             }
             paginatedHeroAdapter.updateFilteredData(filteredHeroes)
         }
     }
 
-    // Paginated Hero Adapter with incremental loading and animations
+    // PaginatedHeroAdapter - tetap sama seperti sebelumnya
     class PaginatedHeroAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         companion object {
             private const val PAGE_SIZE = 10
             private const val ANIMATION_DURATION = 150L
-            private const val LOAD_DELAY = 500L // Delay antar item
-            private const val AUTO_LOAD_DELAY = 2000L // Delay sebelum memuat item selanjutnya
+            private const val LOAD_DELAY = 500L
+            private const val AUTO_LOAD_DELAY = 2000L
         }
 
         interface OnItemClickListener {
@@ -178,49 +192,14 @@ class heroes : Fragment() {
         }
 
         private var onItemClickListener: OnItemClickListener? = null
-
-        fun setOnItemClickListener(listener: OnItemClickListener) {
-            onItemClickListener = listener
-        }
-
         private var originalHeroes: List<Hero> = listOf()
         private val displayedHeroes: MutableList<Hero> = mutableListOf()
         private var loadedItemCount = 0
         private var hasMoreData = true
-        private val handler = Handler(Looper.getMainLooper())
         private var isLoading = false
 
-        fun setInitialData(heroes: List<Hero>) {
-            originalHeroes = heroes
-            displayedHeroes.clear()
-            loadedItemCount = 0
-            hasMoreData = true
-            isLoading = false
-
-            // Muat 10 item pertama
-            loadInitialPage()
-
-            // Mulai proses auto-load
-            scheduleAutoLoad()
-        }
-
-        private fun loadInitialPage() {
-            val initialPageSize = minOf(PAGE_SIZE, originalHeroes.size)
-            for (i in 0 until initialPageSize) {
-                displayedHeroes.add(originalHeroes[i])
-            }
-            loadedItemCount = initialPageSize
-            hasMoreData = loadedItemCount < originalHeroes.size
-            notifyDataSetChanged()
-        }
-
-        private fun scheduleAutoLoad() {
-            // Jika masih ada data yang bisa dimuat
-            if (canLoadMore() && !isLoading) {
-                handler.postDelayed({
-                    loadNextPage()
-                }, AUTO_LOAD_DELAY)
-            }
+        fun setOnItemClickListener(listener: OnItemClickListener) {
+            onItemClickListener = listener
         }
 
         fun updateFilteredData(heroes: List<Hero>) {
@@ -229,14 +208,8 @@ class heroes : Fragment() {
             loadedItemCount = 0
             hasMoreData = true
             isLoading = false
-
-            // Muat 10 item pertama setelah filter
             loadInitialPage()
-
-            // Mulai proses auto-load
-            scheduleAutoLoad()
         }
-
 
         fun canLoadMore() = hasMoreData && loadedItemCount < originalHeroes.size
 
@@ -248,7 +221,7 @@ class heroes : Fragment() {
             val itemsToLoad = minOf(PAGE_SIZE, remainingItems)
 
             for (i in 0 until itemsToLoad) {
-                handler.postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed({
                     if (loadedItemCount < originalHeroes.size) {
                         displayedHeroes.add(originalHeroes[loadedItemCount])
                         notifyItemInserted(displayedHeroes.size - 1)
@@ -256,13 +229,21 @@ class heroes : Fragment() {
 
                         if (i == itemsToLoad - 1) {
                             isLoading = false
-                            scheduleAutoLoad()
                         }
                     }
                 }, i * LOAD_DELAY)
             }
         }
 
+        private fun loadInitialPage() {
+            val initialPageSize = minOf(PAGE_SIZE, originalHeroes.size)
+            for (i in 0 until initialPageSize) {
+                displayedHeroes.add(originalHeroes[i])
+            }
+            loadedItemCount = initialPageSize
+            hasMoreData = loadedItemCount < originalHeroes.size
+            notifyDataSetChanged()
+        }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val view = LayoutInflater.from(parent.context)
@@ -276,45 +257,34 @@ class heroes : Fragment() {
 
             heroHolder.name.text = hero.name
             heroHolder.description.text = hero.description
-            heroHolder.image.setImageResource(
-                heroHolder.itemView.context.resources.getIdentifier(
-                    hero.imageRes,
-                    "drawable",
-                    heroHolder.itemView.context.packageName
-                )
-            )
-            val context = heroHolder.itemView.context
-            val imageResId = context.resources.getIdentifier(hero.imageRes, "drawable", context.packageName)
-            if (imageResId != 0) {
-                heroHolder.image.setImageResource(imageResId)
-            } else {
-                heroHolder.image.setImageResource(R.drawable.hero) // Gambar default jika tidak ditemukan
-            }
+
+            // Memuat gambar dari GitHub
+            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/"
+            Glide.with(heroHolder.itemView.context)
+                .load("$heroImageBaseUrl${hero.imageRes}.png")
+                .placeholder(R.drawable.hero)
+                .error(R.drawable.hero)
+                .into(heroHolder.image)
 
             holder.itemView.setOnClickListener {
                 onItemClickListener?.onItemClick(hero)
             }
-
 
             // Animate item entry
             animateItemEntry(heroHolder.itemView, position)
         }
 
         private fun animateItemEntry(itemView: View, position: Int) {
-            // Slide and fade animation
             val translationY = ObjectAnimator.ofFloat(itemView, "translationY", 100f, 0f)
-
-
             AnimatorSet().apply {
                 playTogether(translationY)
-                duration = ANIMATION_DURATION + (position * 50L) // Stagger effect
+                duration = ANIMATION_DURATION + (position * 50L)
                 start()
             }
         }
 
         override fun getItemCount(): Int = displayedHeroes.size
 
-        // Hero View Holder (tetap sama)
         class HeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val name: TextView = itemView.findViewById(R.id.title)
             val description: TextView = itemView.findViewById(R.id.desc)

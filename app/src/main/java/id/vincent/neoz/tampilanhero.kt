@@ -3,9 +3,11 @@ package id.vincent.neoz
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
+import com.bumptech.glide.Glide
 
 class tampilanhero : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,31 +39,36 @@ class tampilanhero : AppCompatActivity() {
             val imghero = findViewById<ImageView>(R.id.images)
             val imgrole = findViewById<ImageView>(R.id.role)
 
-
             titleTextView.text = hero.name
             tipeTextView.text = hero.type
             bpTextView.text = hero.bp
             dmTextView.text = hero.dm
             tiketTextView.text = hero.tiket
             descTextView.text = hero.story
-            val imageResId = resources.getIdentifier(hero.imageRes, "drawable", packageName)
-            if (imageResId != 0) {
-                imghero.setImageResource(imageResId)
-            } else {
-                imghero.setImageResource(R.drawable.hero) // Gambar default jika tidak ditemukan
-            }
-            // Set role image dynamically
-            val roleImageResId = resources.getIdentifier(hero.rolee, "drawable", packageName)
-            if (roleImageResId != 0) {
-                imgrole.setImageResource(roleImageResId)
-            } else {
-                imgrole.setImageResource(R.drawable.hero) // Gambar default jika tidak ditemukan
-            }
+
+            // URL dasar untuk gambar hero dan role
+            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/"
+            val roleLaneBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/imglane/"
+
+            // Memuat gambar hero dari GitHub
+            Glide.with(this)
+                .load("$heroImageBaseUrl${hero.imageRes}.png")
+                .placeholder(R.drawable.hero)
+                .error(R.drawable.hero)
+                .into(imghero)
+
+            // Memuat gambar role dari GitHub dengan fallback
+            val roleImageUrl = "$roleLaneBaseUrl${hero.rolee}.png"
+            Glide.with(this)
+                .load(roleImageUrl)
+                .placeholder(R.drawable.hero)
+                .error(R.drawable.hero)
+                .into(imgrole)
 
         } else {
             // Handle the case where hero is null
-            // You might want to show a message or finish the activity
-            finish() // or show a Toast message
+            Toast.makeText(this, "Hero data not found", Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 
