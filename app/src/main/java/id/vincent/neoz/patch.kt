@@ -1,26 +1,36 @@
 package id.vincent.neoz
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.annotations.SerializedName
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 
 
 
 
 
 class patch : Fragment() {
+    private lateinit var patchViewModel: PatchViewModel
+    private lateinit var patchAdapter: PatchAdapter
+    private lateinit var patchSpinner: Spinner
 
 
     data class UPatch(
@@ -89,9 +99,9 @@ class patch : Fragment() {
         }
     }
 
-    private val patchViewModel: PatchViewModel by lazy {
-        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[PatchViewModel::class.java]
-    }
+//    private val patchViewModel: PatchViewModel by lazy {
+//        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[PatchViewModel::class.java]
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -99,11 +109,54 @@ class patch : Fragment() {
         val view = inflater.inflate(R.layout.patch, container, false)
         setupRecyclerView(view)
 
+
+        // Setup ViewModel
+        patchViewModel = ViewModelProvider(this)[PatchViewModel::class.java]
+
+        // Setup RecyclerView
+        setupRecyclerView(view)
+
+        // Setup Spinner
+        setupSpinner(view)
+
+
+
         patchViewModel.patchlist.observe(viewLifecycleOwner) { patches ->
             (view.findViewById<RecyclerView>(R.id.list_patch).adapter as PatchAdapter).updateData(patches)
         }
 
+        // Observe patch files
+        patchViewModel.patchFiles.observe(viewLifecycleOwner) { patchFiles ->
+            setupSpinnerAdapter(patchFiles)
+        }
+
         return view
+    }
+    private fun setupSpinner(view: View) {
+        patchSpinner = view.findViewById(R.id.patch_spinner)
+    }
+
+    private fun setupSpinnerAdapter(patchFiles: List<String>) {
+        val spinnerAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            patchFiles
+        )
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        patchSpinner.adapter = spinnerAdapter
+
+        // Set default selection to the first patch
+        patchSpinner.setSelection(0)
+
+        // Handle spinner selection
+        patchSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedPatchFile = patchFiles[position]
+                patchViewModel.loadDataFromGitHub(selectedPatchFile)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
     }
 
     private fun setupRecyclerView(view: View) {
@@ -145,15 +198,30 @@ class patch : Fragment() {
             holder.intro.text = patch.descHero
             holder.ptext.text = patch.textpatch
 
-            // Mengambil gambar berdasarkan imageHero
-            val imageResId = holder.itemView.context.resources.getIdentifier(
-                patch.imageHero, "drawable", holder.itemView.context.packageName
-            )
-            if (imageResId != 0) {
-                holder.image.setImageResource(imageResId) // Menggunakan setImageResource untuk ImageView
-            } else {
-                holder.image.setImageResource(R.drawable.hero) // Gambar default jika tidak ditemukan
-            }
+            // URL dasar untuk gambar hero
+            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/"
+
+            // Memuat gambar hero dari GitHub
+            Glide.with(holder.itemView.context)
+                .load("$heroImageBaseUrl${patch.imageHero}.png")
+                .placeholder(R.drawable.hero) // Gambar default jika tidak ditemukan
+                .error(R.drawable.hero)
+                .into(holder.image)
+
+            // Memuat background patch dari GitHub
+            val patchUrl = "$heroImageBaseUrl${patch.patch}.png"
+
+            Glide.with(holder.itemView.context)
+                .load(patchUrl)
+                .into(object : CustomTarget<Drawable>() {
+                    override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                        holder.pimg.background = resource
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                        // Implementasi jika diperlukan
+                    }
+                })
 
             // Menampilkan background untuk patch berdasarkan nama di patch
         val patchResId = holder.itemView.context.resources.getIdentifier(
@@ -175,4 +243,5 @@ class patch : Fragment() {
             notifyDataSetChanged()
         }
     }
+
 }

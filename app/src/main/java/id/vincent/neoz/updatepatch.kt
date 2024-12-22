@@ -8,6 +8,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import android.graphics.drawable.Drawable
 
 class updatepatch : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,15 +48,29 @@ class updatepatch : AppCompatActivity() {
             textPatchTextView.text = patch.textpatch
             updateHeroTextView.text = patch.update
 
-            // Set gambar
-            val imageResId = resources.getIdentifier(
-                patch.imageHero,
-                "drawable",
-                packageName
-            )
-            if (imageResId != 0) {
-                imageView.setImageResource(imageResId)
-            }
+            // Set gambar menggunakan Glide
+            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/"
+
+            Glide.with(this)
+                .load("$heroImageBaseUrl${patch.imageHero}.png")
+                .placeholder(R.drawable.hero)
+                .error(R.drawable.hero)
+                .into(imageView)
+
+            // Set background patch
+            val patchUrl = "$heroImageBaseUrl${patch.patch}.png"
+
+            Glide.with(this)
+                .load(patchUrl)
+                .into(object : CustomTarget<Drawable>() {
+                    override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                        patchLinearLayout.background = resource
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                        // Implementasi jika diperlukan
+                    }
+                })
 
             // Set atribut, passive, skill1, skill2, skill3, ultimate jika ada
             setTextOrHide(R.id.atribut, patch.atribut)
