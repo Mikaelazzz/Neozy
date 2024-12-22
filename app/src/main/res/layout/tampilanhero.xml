@@ -80,8 +80,7 @@
                         <ImageView
                             android:id="@+id/images"
                             android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/hero1" />
+                            android:layout_height="100dp" />
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
