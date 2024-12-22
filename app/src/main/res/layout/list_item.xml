@@ -127,6 +127,7 @@
                     android:fontFamily="@font/poppinssemibold"
                     android:textColor="@color/font"
                     android:textSize="14sp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     />
@@ -139,6 +140,7 @@
                     android:textColor="@color/font"
                     android:textSize="14sp"
                     android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/item1"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <TextView
@@ -150,6 +152,7 @@
                     android:textColor="@color/font"
                     android:textSize="14sp"
                     android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/item2"
 
                     app:layout_constraintStart_toStartOf="parent"/>
@@ -169,6 +172,7 @@
                     android:fontFamily="@font/poppinssemibold"
                     android:textColor="@color/font"
                     android:textSize="14sp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <TextView
@@ -180,6 +184,7 @@
                     android:textColor="@color/font"
                     android:textSize="14sp"
                     android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/item4"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <TextView
@@ -191,6 +196,7 @@
                     android:textColor="@color/font"
                     android:textSize="14sp"
                     android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/item5"
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
