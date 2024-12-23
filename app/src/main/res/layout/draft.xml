@@ -59,7 +59,8 @@
                 android:layout_height="50dp"
                 android:text="Fun"
                 android:textColor="@color/font2"
-                android:fontFamily="@font/poppinssemibold">
+                android:fontFamily="@font/poppinssemibold"
+                >
             </RadioButton>
             <RadioButton
                 android:id="@+id/role"
@@ -67,7 +68,9 @@
                 android:layout_height="50dp"
                 android:text="Role"
                 android:textColor="@color/font2"
-                android:fontFamily="@font/poppinssemibold">
+                android:fontFamily="@font/poppinssemibold"
+                android:layout_marginLeft="29dp"
+                android:paddingRight="24dp">
             </RadioButton>
         </LinearLayout>
 
