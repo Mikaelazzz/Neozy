@@ -25,7 +25,6 @@
             android:id="@+id/imgHero"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/hero1"
             android:layout_marginBottom="5dp"/>
         <ImageView
             android:layout_width="51dp"
@@ -47,6 +46,5 @@
     <ImageView
         android:id="@+id/imgRole"
         android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/vengeance"/>
+        android:layout_height="50dp" />
 </LinearLayout>
