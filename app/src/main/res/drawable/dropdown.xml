@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/active_button"/>
+                    <corners android:radius="4dp"/>
+                </shape>
+            </item>
+            <item
+                android:drawable="@drawable/ic_dropdown"
+                android:gravity="end|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"/>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/button"/>
+                    <corners android:radius="4dp"/>
+                </shape>
+            </item>
+            <item
+                android:drawable="@drawable/ic_dropdown"
+                android:gravity="end|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                />
+        </layer-list>
+    </item>
+</selector>
