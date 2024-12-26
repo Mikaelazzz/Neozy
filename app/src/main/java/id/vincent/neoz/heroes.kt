@@ -259,11 +259,11 @@ class heroes : Fragment() {
             heroHolder.description.text = hero.description
 
             // Memuat gambar dari GitHub
-            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/"
+            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/hero/"
             Glide.with(heroHolder.itemView.context)
                 .load("$heroImageBaseUrl${hero.imageRes}.png")
-                .placeholder(R.drawable.hero)
-                .error(R.drawable.hero)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.error)
                 .into(heroHolder.image)
 
             holder.itemView.setOnClickListener {
