@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class bspell : Fragment() {
     private val spellViewModel: SpellViewModel by lazy {
@@ -53,8 +54,7 @@ class bspell : Fragment() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpellViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.list_spell, parent, false)
-            return SpellViewHolder(view)
-        }
+            return SpellViewHolder(view) }
 
         override fun onBindViewHolder(holder: SpellViewHolder, position: Int) {
             val spell = spells[position]
@@ -62,9 +62,16 @@ class bspell : Fragment() {
             holder.intro.text = spell.introSpell
             holder.desc.text = spell.deskripsiSpell
             holder.cooldown.text = "Cooldown : ${spell.cdSpell}s"
-            holder.image.setImageResource(
-                holder.itemView.context.resources.getIdentifier(spell.imageSpell, "drawable", holder.itemView.context.packageName)
-            )
+
+            // URL dasar untuk gambar spell
+            val spellImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/spell/"
+
+            // Memuat gambar dari GitHub menggunakan Glide
+            Glide.with(holder.itemView.context)
+                .load("$spellImageBaseUrl${spell.imageSpell}.png")
+                .placeholder(R.drawable.loading) // Gambar placeholder
+                .error(R.drawable.error) // Gambar error
+                .into(holder.image)
         }
 
         override fun getItemCount(): Int = spells.size
