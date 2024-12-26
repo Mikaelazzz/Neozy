@@ -22,6 +22,13 @@
         android:spinnerMode="dropdown"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/dropdown"
+        android:gravity="center_vertical"
+        android:paddingBottom="2.5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="18dp"
+        android:popupBackground="@color/active_button"
+        android:dropDownVerticalOffset="40dp"
         />
 <!--    <TextView-->
 <!--        android:id="@+id/update_patch"-->
@@ -33,7 +40,7 @@
 <!--        android:textSize="24sp"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        android:layout_marginLeft="35dp"-->
+<!--        android:layout_marginLeft="215dp"-->
 <!--        android:layout_marginTop="5dp"-->
 <!--        />-->
 
@@ -41,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="60dp"
         >
 
 
