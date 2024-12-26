@@ -49,12 +49,12 @@ class updatepatch : AppCompatActivity() {
             updateHeroTextView.text = patch.update
 
             // Set gambar menggunakan Glide
-            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/"
+            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/hero/"
 
             Glide.with(this)
                 .load("$heroImageBaseUrl${patch.imageHero}.png")
-                .placeholder(R.drawable.hero)
-                .error(R.drawable.hero)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.error)
                 .into(imageView)
 
             // Set background patch
@@ -73,7 +73,7 @@ class updatepatch : AppCompatActivity() {
                 })
 
             // Set atribut, passive, skill1, skill2, skill3, ultimate jika ada
-            setTextOrHide(R.id.atribut, patch.atribut)
+            setTextOrHide(R.id.atribut, patch.atribute)
             setTextOrHide(R.id.pasif, patch.passive)
             setTextOrHide(R.id.skill1, patch.skill1)
             setTextOrHide(R.id.skill2, patch.skill2)
