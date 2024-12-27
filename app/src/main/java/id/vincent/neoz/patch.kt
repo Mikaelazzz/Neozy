@@ -41,7 +41,7 @@ class patch : Fragment() {
         @SerializedName("descHero") val descHero: String,
         @SerializedName("update") val update: String,
         @SerializedName("type") val type: String,
-        @SerializedName("atribut") val atribut: String,
+        @SerializedName("atribute") val atribute: String,
         @SerializedName("passive") val passive: String,
         @SerializedName("skill1") val skill1: String,
         @SerializedName("skill2") val skill2: String,
@@ -75,7 +75,7 @@ class patch : Fragment() {
             parcel.writeString(descHero)
             parcel.writeString(update)
             parcel.writeString(type)
-            parcel.writeString(atribut)
+            parcel.writeString(atribute)
             parcel.writeString(passive)
             parcel.writeString(skill1)
             parcel.writeString(skill2)
@@ -137,27 +137,30 @@ class patch : Fragment() {
     }
 
     private fun setupSpinnerAdapter(patchFiles: List<String>) {
-        val spinnerAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            patchFiles
-        )
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        patchSpinner.adapter = spinnerAdapter
+        patchViewModel.patchVersions.observe(viewLifecycleOwner) { patchVersions ->
+            val spinnerAdapter = ArrayAdapter(
+                requireContext(),
+                R.layout.spinner_item, // Layout untuk item spinner
+                patchVersions
+            )
+            spinnerAdapter.setDropDownViewResource(R.layout.dropdown) // Layout untuk dropdown
+            patchSpinner.adapter = spinnerAdapter
 
-        // Set default selection to the first patch
-        patchSpinner.setSelection(0)
+            // Set default selection to the first patch version
+            patchSpinner.setSelection(0)
 
-        // Handle spinner selection
-        patchSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedPatchFile = patchFiles[position]
-                patchViewModel.loadDataFromGitHub(selectedPatchFile)
+            patchSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    val selectedPatchVersion = patchVersions[position]
+                    val correspondingFile = patchFiles[position]
+                    patchViewModel.loadDataFromGitHub(correspondingFile)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
+
 
     private fun setupRecyclerView(view: View) {
         val recyclerView: RecyclerView = view.findViewById(R.id.list_patch)
@@ -199,13 +202,13 @@ class patch : Fragment() {
             holder.ptext.text = patch.textpatch
 
             // URL dasar untuk gambar hero
-            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/"
+            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/hero/"
 
             // Memuat gambar hero dari GitHub
             Glide.with(holder.itemView.context)
                 .load("$heroImageBaseUrl${patch.imageHero}.png")
-                .placeholder(R.drawable.hero) // Gambar default jika tidak ditemukan
-                .error(R.drawable.hero)
+                .placeholder(R.drawable.loading) // Gambar default jika tidak ditemukan
+                .error(R.drawable.error)
                 .into(holder.image)
 
             // Memuat background patch dari GitHub
