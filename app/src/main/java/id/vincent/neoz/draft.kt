@@ -90,7 +90,7 @@ class HeroShuffleManager(
                 "jung" -> R.drawable.jung
                 "roam" -> R.drawable.roam
                 "exp" -> R.drawable.exp
-                else -> R.drawable.vengeance
+                else -> R.drawable.error
             }
             holder.roleImageView.setImageResource(roleImageResourceId)
 
