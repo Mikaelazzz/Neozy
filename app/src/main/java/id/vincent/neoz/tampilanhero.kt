@@ -47,22 +47,22 @@ class tampilanhero : AppCompatActivity() {
             descTextView.text = hero.story
 
             // URL dasar untuk gambar hero dan role
-            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/"
-            val roleLaneBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/imglane/"
+            val heroImageBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/hero/"
+            val roleLaneBaseUrl = "https://raw.githubusercontent.com/Mikaelazzz/assets/master/img/lane/"
 
             // Memuat gambar hero dari GitHub
             Glide.with(this)
                 .load("$heroImageBaseUrl${hero.imageRes}.png")
-                .placeholder(R.drawable.hero)
-                .error(R.drawable.hero)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.error)
                 .into(imghero)
 
             // Memuat gambar role dari GitHub dengan fallback
             val roleImageUrl = "$roleLaneBaseUrl${hero.rolee}.png"
             Glide.with(this)
                 .load(roleImageUrl)
-                .placeholder(R.drawable.hero)
-                .error(R.drawable.hero)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.error)
                 .into(imgrole)
 
         } else {
