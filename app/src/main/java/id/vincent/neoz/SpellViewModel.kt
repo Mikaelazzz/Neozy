@@ -5,8 +5,15 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 
 data class Spell(
     val spell: String,
@@ -15,29 +22,53 @@ data class Spell(
     val imageSpell: String,
     val deskripsiSpell: String
 )
-
-class SpellViewModel (application: Application) : AndroidViewModel(application) {
-
+class SpellViewModel(application: Application) : AndroidViewModel(application) {
     private val _spellList = MutableLiveData<List<Spell>>()
     val spellList: LiveData<List<Spell>> get() = _spellList
 
-    init {
-        loadDataFromJson()
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
+
+    // Interface untuk service GitHub
+    interface GitHubService {
+        @GET("Mikaelazzz/assets/master/spell/spell.json")
+        suspend fun getSpellData(): Response<List<Spell>>
     }
 
-    private fun loadDataFromJson() {
-        try {
-            val context: Context = getApplication<Application>().applicationContext
-            val json = context.assets.open("spell.json").bufferedReader().use { it.readText() }
+    private val gitHubService: GitHubService
 
-            // Mengonversi JSON ke List<Spell>
-            val type = object : TypeToken<List<Spell>>() {}.type
-            val spells: List<Spell> = Gson().fromJson(json, type)
+    init {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://raw.githubusercontent.com/")
+            .client(OkHttpClient.Builder().build())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-            _spellList.value = spells
-        } catch (e: Exception) {
-            e.printStackTrace() // Debugging error
-            _spellList.value = emptyList() // Pastikan aplikasi tetap berjalan
+        gitHubService = retrofit.create(GitHubService::class.java)
+
+        // Muat data saat ViewModel dibuat
+        fetchSpells()
+    }
+
+    fun fetchSpells() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val response = gitHubService.getSpellData()
+                if (response.isSuccessful) {
+                    val spells = response.body() ?: emptyList()
+                    _spellList.value = spells
+                } else {
+                    _error.value = "Failed to load spells: ${response.code()}"
+                }
+            } catch (e: Exception) {
+                _error.value = "Error loading spells: ${e.message}"
+            } finally {
+                _isLoading.value = false
+            }
         }
     }
 }
